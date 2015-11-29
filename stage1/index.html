@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IPND: Stage 1 Notes</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- This page of notes was designed to resemble a scroll from the series RWBY, which are electronic tablet-like devices. -->
+
+    <div class="flex-container">
+
+        <!-- Left grip -->
+        <div class="grip left-side">
+            <div class="diamond button"></div>
+        </div>
+
+        <!-- Screen and content -->
+        <div class="screen">
+            <div class="screen-region">
+
+                <h1>Stage 0 Notes</h1>
+
+                <h2>Thinking Like a Programmer</h2>
+
+                <ul>
+                    <li>
+                        <p>
+                            <strong>Procedural Thinking:</strong> For solving a bigger problem, you break down what to do into a series of steps to follow.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>Abstract Thinking:</strong> You take the base understanding and apply it in multiple situations that are similar. For instance, knowing that one apple and one apple are two apples can allow you to understand that one orange and one orange are two oranges. The abstract idea is that 1 + 1 = 2.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>Systematic Debugging:</strong> In an orderly manner, you identify problems (or potential problems). Then, you track down potential causes until you are able to fix the problem.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>Technological Empathy:</strong> Having an understanding for how the computer sees and interprets things.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>Systems Thinking:</strong> You take a big idea, then break it down into its component pieces. Used in planning, allowing you to "divide and conquer".
+                        </p>
+                    </li>
+                </ul>
+
+                <h2>The Basics of the Web and HTML</h2>
+
+                <h3>World Wide Web</h3>
+
+                <ul>
+                    <li>
+                        <p>
+                            Made up of HTML pages.
+                        </p>
+
+                        <ul>
+                            <li>
+                                <p>
+                                    <strong>text content:</strong> what you see
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>markup:</strong> what it looks like
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    references to other documents
+                                </p>
+                            </li>
+                            <li>
+                                links to other pages
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>
+                            With a computer, a user is connected to the internet and looks up a URL address in the browser. The browser makes an HTTP request. Servers reply to this request with files, which the browser interprets and displays to the user.
+                        </p>
+                    </li>
+                </ul>
+
+                <h3>HTML Markup</h3>
+
+                <ul>
+                    <li>
+                        <p>
+                            <strong>Standard Tag:</strong> &lt;name>contents&lt;name>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>With Attribute:</strong> &lt;name attr="value">contents&lt;name>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>Void Tag:</strong> &lt;name> or &lt;name attr="value">
+                        </p>
+                    </li>
+                </ul>
+
+                <h3>Computers are Stupid</h3>
+
+                <p>
+                    Computers follow instructions they are given exactly. Small errors that a human understands the intention of are usually misunderstood by a computer. They might be taught how to guess what to do, but as autocorrect on phones show, it's often not very good to rely on.
+                </p>
+
+                <h1>Lesson 2</h1>
+                <p>
+                    Creating a Structured Document
+                </p>
+
+                <h2>Why Start with HTML and CSS></h2>h2>
+
+                <p>
+                    Web pages are visual from the start, giving you instant results you can see as you work and make changes. You can also show what you make to anyone easily.
+                </p>
+
+                <h2>Languages of the Web</h2>
+
+                <p>
+                    HTML, CSS, and JavaScript are the trio of languages that make up the front-end part of the web. Each one plays a different role. HTML provides the structure of each page, CSS provides the style, and JavaScript provides the interactive components.
+                </p>
+
+                <p>
+                    JavaScript is not to be confused with Java, which is a different language entirely. Their names may seem confusing, but think of it like "ham" and "hamburder" or "car" and "carpet". However, this similarity was not on accident as Netscape, the creators of JavaScript, was working with Sun Microsystems, the creators of Java. Netscape thought using a similar name to Sun's popular language would attract people, and that turned out to be true.
+                </p>
+
+                <h2>Developer Tools</h2>
+
+                <p>
+                    Most browsers contain a set of tools known as Developer Tools. These can be used to look at the underlying structure and other components of a website. You can make adjustments to the page to test design ideas, all of which are temporary and gone when you refresh the page. This makes Dev Tools very handy for web developers.
+                </p>
+
+                <h2>Tree-Like Structure of Web Pages</h2>
+
+                <p>
+                    A web page is made up of elements within elements. If you mapped this out, you would end up with a tree-like structure. It's much like a family tree considering that elements have a parent-child relationship, with child elements being within their parent.
+                </p>
+
+                <p>
+                    Using Dev Tools, we can see and interact with this tree. The elements are neatly collapsed within one another, and by opening them, we can make our way down from the basic structure of the page (like the body) to any element.
+                </p>
+
+                <h2>Document Object Model</h2>
+
+                <p>
+                    The DOM is the method browsers use to turn written HTML into the tree-like structure we see within Dev Tools, which is known as the DOM tree or simply "the DOM" for short. It's essentially the current HTML-based state of the page, which can be manipulated by Dev Tools or JavaScript.
+                </p>
+
+                <h2>Boxes in HTML</h2>
+
+                <p>
+                    Everything on a web page is made up of boxes, even the items that are circles or other shapes. div is a common container element for grouping related elements together. It's good to label div elements with classes that make clear what they're for.
+                </p>
+
+                <h2>Crossing the Skills Gap</h2>
+
+                <p>
+                    Starting at a novice level, we're starting to progress towards being experts. For novices, facts are scattered. Through reflection, we can begin to think like an expert and work toward the structured understanding that an expert has. Although a novice may have good ideas, only through practice will we be able to gain the ability to execute those ideas. While practicing, we begin to act and look like an expert.
+                </p>
+
+            </div>
+        </div>
+
+        <!-- Right grip -->
+        <div class="grip right-side">
+            <div class="diamond button-groove"></div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

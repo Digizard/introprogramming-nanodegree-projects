@@ -1,0 +1,127 @@
+/*************
+ * style.css
+ *************/
+
+/* Main styles */
+
+html,
+body,
+.flex-container {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  background-color: #333;
+  color: white;
+}
+
+body,
+div {
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.flex-container {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  margin: auto;
+  max-height: 800px;
+  max-width: 900px;
+  min-height: 340px;
+  min-width: 340px;
+}
+
+/* For the grips of the scroll */
+
+.grip {
+  background-color: #d9d9d9;
+  border: solid #c0c5c4;
+  height: 100%;
+  position: relative;
+  width: 100px;
+}
+
+.left-side {
+  -moz-border-radius: 50px 0 0 50px;
+  -webkit-border-radius: 50px 0 0 50px;
+  border-radius: 50px 0 0 50px;
+  border-width: 10px 0 10px 10px;
+}
+
+.right-side {
+  -moz-border-radius: 0 50px 50px 0;
+  -webkit-border-radius: 0 50px 50px 0;
+  border-radius: 0 50px 50px 0;
+  border-width: 10px 10px 10px 0;
+}
+
+/* The screen, where the content goes */
+
+.screen-box {
+  height: 100%;
+  width: calc(100% - 200px);
+}
+
+.screen {
+  background-color: #666;
+  border: solid #c0c5c4;
+  border-width: 10px 0 10px 0;
+  height: calc(100% - 1em);
+  margin: 0.5em 0;
+  padding: 1em;
+  width: calc(100% - 200px);
+}
+
+.screen-region {
+  height: 100%;
+  overflow-y: scroll;
+  padding: 0 1em;
+}
+
+/* Decorating the button and the area it slides into when device is closed */
+
+.diamond {
+  border: 60px solid transparent;
+  height: 0;
+  position: absolute;
+  top: calc(50% - 60px);
+  width: 0;
+}
+
+.diamond:before {
+  content: "";
+  height: 0;
+  position: absolute;
+  width: 0;
+}
+
+.button {
+  border-left: 30px solid #c4900c;
+  left: 92px;
+}
+
+.button:before {
+  border: 60px solid transparent;
+  border-right: 30px solid #c4900c;
+  right: 30px;
+  top: -60px;
+}
+
+.button-groove {
+  border-left: 30px solid #333;
+  left: 0;
+}
+
+.button-groove:before {
+  border: 50px solid transparent;
+  border-left: 25px solid #d9d9d9;
+  right: -45px;
+  top: -50px;
+}
