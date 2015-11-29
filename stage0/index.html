@@ -3,105 +3,133 @@
 
 <head>
     <title>IPND: Stage 0 Notes</title>
+
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <h1>Stage 0 Notes</h1>
+    <!-- This page of notes was designed to resemble a scroll from the series RWBY, which are electronic tablet-like devices. -->
 
-    <h2>Thinking Like a Programmer</h2>
+    <div class="flex-container">
 
-    <ul>
-        <li>
-            <p>
-                <strong>Procedural Thinking:</strong> For solving a bigger problem, you break down what to do into a series of steps to follow.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Abstract Thinking:</strong> You take the base understanding and apply it in multiple situations that are similar. For instance, knowing that one apple and one apple are two apples can allow you to understand that one orange and one orange are two oranges. The abstract idea is that 1 + 1 = 2.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Systematic Debugging:</strong> In an orderly manner, you identify problems (or potential problems). Then, you track down potential causes until you are able to fix the problem.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Technological Empathy:</strong> Having an understanding for how the computer sees and interprets things.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Systems Thinking:</strong> You take a big idea, then break it down into its component pieces. Used in planning, allowing you to "divide and conquer".
-            </p>
-        </li>
-    </ul>
+        <!-- Left grip -->
+        <div class="grip left-side">
+            <div class="diamond button"></div>
+        </div>
 
-    <h2>The Basics of the Web and HTML</h2>
+        <!-- Screen and content -->
+        <div class="screen">
+            <div class="screen-region">
 
-    <h3>World Wide Web</h3>
+                <h1>Stage 0 Notes</h1>
 
-    <ul>
-        <li>
-            <p>
-                Made up of HTML pages.
-            </p>
-            <ul>
-                <li>
-                    <p>
-                        <strong>text content:</strong> what you see
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        <strong>markup:</strong> what it looks like
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        references to other documents
-                    </p>
-                </li>
-                <li>
-                    links to other pages
-                </li>
-            </ul>
-        </li>
-        <li>
-            <p>
-                With a computer, a user is connected to the internet and looks up a URL address in the browser. The brower makes an HTTP request. Servers reply to this request with files, which the browser interprets and displays to the user.
-            </p>
-        </li>
-    </ul>
+                <h2>Thinking Like a Programmer</h2>
 
-    <h3>HTML Markup</h3>
+                <ul>
+                    <li>
+                        <p>
+                            <strong>Procedural Thinking:</strong> For solving a bigger problem, you break down what to do into a series of steps to follow.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>Abstract Thinking:</strong> You take the base understanding and apply it in multiple situations that are similar. For instance, knowing that one apple and one apple are two apples can allow you to understand that one orange and one orange are two oranges. The abstract idea is that 1 + 1 = 2.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>Systematic Debugging:</strong> In an orderly manner, you identify problems (or potential problems). Then, you track down potential causes until you are able to fix the problem.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>Technological Empathy:</strong> Having an understanding for how the computer sees and interprets things.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>Systems Thinking:</strong> You take a big idea, then break it down into its component pieces. Used in planning, allowing you to "divide and conquer".
+                        </p>
+                    </li>
+                </ul>
 
-    <ul>
-        <li>
-            <p>
-                <strong>Standard Tag:</strong> &lt;name>contents&lt;name>
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>With Attribute:</strong> &lt;name attr="value">contents&lt;name>
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Void Tag:</strong> &lt;name> or &lt;name attr="value">
-            </p>
-        </li>
-    </ul>
+                <h2>The Basics of the Web and HTML</h2>
 
-    <h3>Computers are Stupid</h3>
+                <h3>World Wide Web</h3>
 
-    <p>
-        Computers follow instructions they are given exactly. Small errors that a human understands the intention of are usually misunderstood by a computer. They might be taught how to guess what to do, but as autocorrect on phones show, it's often not very good to rely on.
-    </p>
+                <ul>
+                    <li>
+                        <p>
+                            Made up of HTML pages.
+                        </p>
+
+                        <ul>
+                            <li>
+                                <p>
+                                    <strong>text content:</strong> what you see
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>markup:</strong> what it looks like
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    references to other documents
+                                </p>
+                            </li>
+                            <li>
+                                links to other pages
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>
+                            With a computer, a user is connected to the internet and looks up a URL address in the browser. The browser makes an HTTP request. Servers reply to this request with files, which the browser interprets and displays to the user.
+                        </p>
+                    </li>
+                </ul>
+
+                <h3>HTML Markup</h3>
+
+                <ul>
+                    <li>
+                        <p>
+                            <strong>Standard Tag:</strong> &lt;name>contents&lt;name>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>With Attribute:</strong> &lt;name attr="value">contents&lt;name>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>Void Tag:</strong> &lt;name> or &lt;name attr="value">
+                        </p>
+                    </li>
+                </ul>
+
+                <h3>Computers are Stupid</h3>
+
+                <p>
+                    Computers follow instructions they are given exactly. Small errors that a human understands the intention of are usually misunderstood by a computer. They might be taught how to guess what to do, but as autocorrect on phones show, it's often not very good to rely on.
+                </p>
+
+            </div>
+        </div>
+
+        <!-- Right grip -->
+        <div class="grip right-side">
+            <div class="diamond button-groove"></div>
+        </div>
+
+    </div>
 
 </body>
 
