@@ -1,11 +1,11 @@
-Stage 0: Getting Started with HTML
+Stage 1: Make a Web Page
 ==================================
 
-These are notes on the first part of the Introduction to Programming Nanodegree at Udacity.
+These are notes on the second part of the Introduction to Programming Nanodegree at Udacity.
 
-This was orginally created on Codepen.io, then downloaded and modified further.
+This is based off of the previous Section 0 notes.
 
-Viewable at: http://sittingfox.github.io/introprogramming-nanodegree-projects/stage0/
+Viewable at: http://sittingfox.github.io/introprogramming-nanodegree-projects/stage1/
 
 
 Design
