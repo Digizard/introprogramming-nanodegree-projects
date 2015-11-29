@@ -27,6 +27,9 @@ div {
 }
 
 .flex-container {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
   margin: auto;
   max-height: 800px;
