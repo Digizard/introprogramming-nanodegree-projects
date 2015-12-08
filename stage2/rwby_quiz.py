@@ -1,7 +1,15 @@
+##
+# rwby_quiz.py
+# This is a fill-in-the-blank quiz game with the items based on the RWBY series.
+
+# Import needed modules
 from os import system
 import platform
 import textwrap
 
+##
+# Sets up paragraphs to be filled in, as well as the answers. Then the game gets
+# going.
 def start_game():
     blanks = ["___1___", "___2___", "___3___", "___4___", "___5___", "___6___"]
 
@@ -36,22 +44,26 @@ def start_game():
                  "Celica"]
               ]
 
+    # Starting screen
     print_title()
     difficulty_level = getDifficulty() - 1
 
+    # Let the quiz begin!
     level_paragraph = paragraphs[difficulty_level]
     level_answers = answers[difficulty_level]
     play_round(level_paragraph, level_answers, blanks)
 
 
-
+##
+# Clear the window of all text.
 def clear_screen():
     if platform.system() == "Windows":
         system("cls")
     else:
         system("clear")
 
-# Major help from GlassGiant.com
+##
+# Outputs the "title screen" to the window. Much thanks to GlassGiant.com.
 def print_title():
     clear_screen()
     print """
@@ -78,19 +90,29 @@ def print_title():
           ,:=  MM  MM          , MMMMMMMMMMMMO+
     """
 
+##
+# Asks user to choose difficulty level and returns selection.
+# @return int - Number 1, 2, or 3 depending on user choice.
 def getDifficulty():
     user_input = raw_input("Select your difficulty. [1 = Easy, 2 = Medium, 3 " +
                            "= Hard]: ")
 
+    # If the user didn't make a valid choice, have them try again
     while user_input != "1" and user_input != "2" and user_input != "3":
         print "" # blank line
         user_input = raw_input("Try again: ")
 
     return int(user_input)
 
+##
+# Runs the quiz with the given level data
+# @param paragraph - String containing blanks to be filled for quiz.
+# @param answers   - List of strings containing the solution for each blank.
+# @param blanks    - List of all numbered blanks that could exist in paragraph.
 def play_round(paragraph, answers, blanks):
     index = 0
 
+    # Try to get user to fill in each blank.
     for answer in answers:
         print_paragraph(paragraph)
         get_answer(answer, index)
@@ -99,24 +121,34 @@ def play_round(paragraph, answers, blanks):
         paragraph = paragraph.replace(blank, answer)
         index += 1
 
+    # When user wins
     print_paragraph(paragraph)
     print "" # blank line
     print "You got it!"
 
+##
+# Output the quiz text so that it wraps at a certain width.
+# @param paragraph - String of text to be output.
 def print_paragraph(paragraph):
     width = 60
 
     clear_screen()
     print textwrap.fill(paragraph, width=width)
 
+##
+# Ask user for answer, repeating request if user is incorrect.
+# @param answer - String of answer user needs to input.
+# @param index  - The index number of the answer in its list.
 def get_answer(answer, index):
     blank_number = str(index + 1)
     print "" # blank line
     user_input = raw_input("For blank #" + blank_number + ": ")
 
+    # If user guesses wrong, have them try again.
     while user_input != answer:
         print "" # blank line
         user_input = raw_input("Try again: ")
 
 
+# Run the game
 start_game()
