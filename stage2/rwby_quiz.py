@@ -51,7 +51,7 @@ def start_game():
     # Let the quiz begin!
     level_paragraph = paragraphs[difficulty_level]
     level_answers = answers[difficulty_level]
-    play_round(level_paragraph, level_answers, blanks)
+    play_level(level_paragraph, level_answers, blanks)
 
 
 ##
@@ -109,7 +109,7 @@ def getDifficulty():
 # @param paragraph - String containing blanks to be filled for quiz.
 # @param answers   - List of strings containing the solution for each blank.
 # @param blanks    - List of all numbered blanks that could exist in paragraph.
-def play_round(paragraph, answers, blanks):
+def play_level(paragraph, answers, blanks):
     index = 0
 
     # Try to get user to fill in each blank.
