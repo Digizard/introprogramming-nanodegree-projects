@@ -7,6 +7,7 @@ from os import system
 import platform
 import textwrap
 
+# Setup necessary data for quiz
 blanks = ["___1___", "___2___", "___3___", "___4___", "___5___", "___6___"]
 
 levels = [
