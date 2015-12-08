@@ -7,50 +7,58 @@ from os import system
 import platform
 import textwrap
 
+blanks = ["___1___", "___2___", "___3___", "___4___", "___5___", "___6___"]
+
+levels = [
+			# Easy
+			{
+				"paragraph": "Team RWBY is led by ___1___ Rose, the other " + \
+							 "members being Weiss Schnee, Blake Belladonna," + \
+							 " and Yang Xiao Long. ___2___ and Ruby are " + \
+							 "sisters. They attend ___3___ Academy, with " + \
+							 "the headmaster being Professor ___4___.",
+				"answers":	["Ruby", "Yang", "Beacon", "Ozpin"]
+			},
+
+			# Medium
+			{
+				"paragraph": "Ruby's semblance is ___1___, leaving a trail " + \
+							 "of rose petals behind her. Blake creates " + \
+							 "___2___ of herself that can take on different" + \
+							 " properties, like ice or fire. Pyrrha Nikos' " + \
+							 "semblance is ___3___, which Ruby mistakenly " + \
+							 "thought was the ability to control ___4___. ",
+				"answers":  ["speed", "shadows", "polarity", "poles"]
+			},
+
+			# Hard
+			{
+				"paragraph": "Ruby's weapon is named ___1___ Rose and is a " + \
+							 "giant scythe as well as a sniper rifle. " + \
+							 "___2___ is Weiss's weapon and resembles a " + \
+							 "fencing sword. Blake wields ___3___ ___4___, " + \
+							 "which is a dual sword and gun combination, " + \
+							 "with a ribbon that allows it to be swung " + \
+							 "around. The gun-firing gauntlets that Yang " + \
+							 "has are called ___5___ ___6___.",
+				"answers": ["Crescent", "Myrtenaster", "Gambol", "Shroud",
+							"Ember", "Celica"]
+			}
+		 ]
+
+
 ##
 # Sets up paragraphs to be filled in, as well as the answers. Then the game gets
 # going.
 def start_game():
-    blanks = ["___1___", "___2___", "___3___", "___4___", "___5___", "___6___"]
-
-    paragraphs = [
-                    "Team RWBY is led by ___1___ Rose, the other members " + \
-                    "being Weiss Schnee, Blake Belladonna, and Yang Xiao " + \
-                    "Long. ___2___ and Ruby are sisters. They attend " + \
-                    "___3___ Academy, with the headmaster being Professor " + \
-                    "___4___.",
-
-                    "Ruby's semblance is ___1___, leaving a trail of rose " + \
-                    "petals behind her. Blake creates ___2___ of herself " + \
-                    "that can take on different properties, like ice or " + \
-                    "fire. Pyrrha Nikos' semblance is ___3___, which Ruby " + \
-                    "mistakenly thought was the ability to control ___4___. ",
-
-                    "Ruby's weapon is named ___1___ Rose and is a giant " + \
-                    "scythe as well as a sniper rifle. ___2___ is Weiss's " + \
-                    "weapon and resembles a fencing sword. Blake wields " + \
-                    "___3___ ___4___, which is a dual sword and gun " + \
-                    "combination, with a ribbon that allows it to be swung " + \
-                    "around. The gun-firing gauntlets that Yang has are " + \
-                    "called ___5___ ___6___."
-
-                ]
-    answers = [
-                ["Ruby", "Yang", "Beacon", "Ozpin"],
-
-                ["speed", "shadows", "polarity", "poles"],
-
-                ["Crescent", "Myrtenaster", "Gambol", "Shroud", "Ember", \
-                 "Celica"]
-              ]
 
     # Starting screen
     print_title()
     difficulty_level = getDifficulty() - 1
 
     # Let the quiz begin!
-    level_paragraph = paragraphs[difficulty_level]
-    level_answers = answers[difficulty_level]
+    level_paragraph = levels[difficulty_level]["paragraph"]
+    level_answers = levels[difficulty_level]["answers"]
     play_level(level_paragraph, level_answers, blanks)
 
 
@@ -98,7 +106,7 @@ def getDifficulty():
                            "= Hard]: ")
 
     # If the user didn't make a valid choice, have them try again
-    while user_input != "1" and user_input != "2" and user_input != "3":
+    while user_input not in ["1", "2", "3"]:
         print "" # blank line
         user_input = raw_input("Try again: ")
 
@@ -110,16 +118,14 @@ def getDifficulty():
 # @param answers   - List of strings containing the solution for each blank.
 # @param blanks    - List of all numbered blanks that could exist in paragraph.
 def play_level(paragraph, answers, blanks):
-    index = 0
-
     # Try to get user to fill in each blank.
     for answer in answers:
+    	index = answers.index(answer)
         print_paragraph(paragraph)
         get_answer(answer, index)
 
         blank = blanks[index]
         paragraph = paragraph.replace(blank, answer)
-        index += 1
 
     # When user wins
     print_paragraph(paragraph)
@@ -127,7 +133,7 @@ def play_level(paragraph, answers, blanks):
     print "You got it!"
 
 ##
-# Output the quiz text so that it wraps at a certain width.
+# Output the quiz text so that it wraps at a certain width on a clean screen.
 # @param paragraph - String of text to be output.
 def print_paragraph(paragraph):
     width = 60
