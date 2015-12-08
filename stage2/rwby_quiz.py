@@ -142,7 +142,7 @@ def print_paragraph(paragraph):
 def get_answer(answer, index):
     blank_number = str(index + 1)
     print "" # blank line
-    user_input = raw_input("For blank #" + blank_number + ": ")
+    user_input = raw_input("What should go in blank #" + blank_number + "?: ")
 
     # If user guesses wrong, have them try again.
     while user_input != answer:
