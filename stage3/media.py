@@ -19,3 +19,11 @@ class Video():
         youtube_id_match = re.search(r'(?<=v=)[^&#]+', self.youtube_url) or re.search(r'(?<=be/)[^&#]+', self.youtube_url)
         self.youtube_id = (youtube_id_match.group(0) if youtube_id_match
                               else None)
+
+class Episode(Video):
+    """Episode-related information."""
+
+    def __init__(self, episode_title, episode_number, youtube_url):
+        # initialize instance of class Episode
+        Video.__init__(self, episode_title, youtube_url)
+        self.episode_number = episode_number

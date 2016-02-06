@@ -57,6 +57,12 @@ main_page_head = '''
             top: 0;
             background-color: white;
         }
+        .episode-number {
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            font-size: 20px;
+        }
     </style>
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
@@ -122,12 +128,20 @@ main_page_content = '''
 
 
 # A single video entry html template
-video_tile_content = '''
-<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="{youtube_id}" data-toggle="modal" data-target="#video">
-    <img class="img-responsive" src="{thumbnail_url}">
-    <h2>{video_title}</h2>
+tile_content = '''
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="{{youtube_id}}" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="{{thumbnail_url}}" alt="{{video_title}} thumbnail">
+    {tile_label}
 </div>
 '''
+
+video_tile_content = tile_content.format(tile_label='<h2>{video_title}</h2>')
+
+episode_tile_content = tile_content.format(tile_label='''
+    <h2 class="episode-number">Episode {episode_number}</h2>
+    <p class="subtitle">{video_title}</p>
+    ''')
+
 
 
 def create_video_tiles_content(videos):
@@ -135,11 +149,19 @@ def create_video_tiles_content(videos):
     content = ''
     for video in videos:
         # Append the tile for the video with its content filled in
-        content += video_tile_content.format(
-            video_title=video.title,
-            thumbnail_url=video.thumbnail_url,
-            youtube_id=video.youtube_id
-        )
+        try:
+            content += episode_tile_content.format(
+                video_title=video.title,
+                episode_number=video.episode_number,
+                thumbnail_url=video.thumbnail_url,
+                youtube_id=video.youtube_id
+            )
+        except:
+            content += video_tile_content.format(
+                video_title=video.title,
+                thumbnail_url=video.thumbnail_url,
+                youtube_id=video.youtube_id
+            )
     return content
 
 
