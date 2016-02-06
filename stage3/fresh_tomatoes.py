@@ -144,24 +144,26 @@ episode_tile_content = tile_content.format(tile_label='''
 
 
 
-def create_video_tiles_content(videos):
+def create_video_tiles_content(playlists):
     # The HTML content for this section of the page
     content = ''
-    for video in videos:
-        # Append the tile for the video with its content filled in
-        try:
-            content += episode_tile_content.format(
-                video_title=video.title,
-                episode_number=video.episode_number,
-                thumbnail_url=video.thumbnail_url,
-                youtube_id=video.youtube_id
-            )
-        except:
-            content += video_tile_content.format(
-                video_title=video.title,
-                thumbnail_url=video.thumbnail_url,
-                youtube_id=video.youtube_id
-            )
+    for playlist in playlists:
+        for video in playlist.videos:
+            # Append the tile for the video with its content filled in
+            try:
+                content += episode_tile_content.format(
+                    video_title=video.title,
+                    episode_number=video.episode_number,
+                    thumbnail_url=video.thumbnail_url,
+                    youtube_id=video.youtube_id
+                )
+            except:
+                content += video_tile_content.format(
+                    video_title=video.title,
+                    thumbnail_url=video.thumbnail_url,
+                    youtube_id=video.youtube_id
+                )
+
     return content
 
 

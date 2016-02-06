@@ -1,6 +1,26 @@
 import re
 import webbrowser
 
+class Playlist():
+    """Collection of videos."""
+
+    def __init__(self, playlist_name, videos=[]):
+        self.name = playlist_name
+        self.videos = videos
+        self.current = 0
+
+    def __iter__(self):
+        return self
+
+    def next(self):
+        if self.current >= len(self.videos):
+            raise StopIteration
+        else:
+            current_video = self.videos[self.current]
+            self.current += 1
+            return current_video
+
+
 class Video():
     """Video-related information."""
 
@@ -19,6 +39,7 @@ class Video():
         youtube_id_match = re.search(r'(?<=v=)[^&#]+', self.youtube_url) or re.search(r'(?<=be/)[^&#]+', self.youtube_url)
         self.youtube_id = (youtube_id_match.group(0) if youtube_id_match
                               else None)
+
 
 class Episode(Video):
     """Episode-related information."""
