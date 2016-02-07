@@ -44,7 +44,7 @@ class Video():
 class Episode(Video):
     """Episode-related information."""
 
-    def __init__(self, episode_title, episode_number, youtube_url):
+    def __init__(self, episode_number, episode_title, youtube_url):
         # initialize instance of class Episode
         Video.__init__(self, episode_title, youtube_url)
         self.episode_number = episode_number
