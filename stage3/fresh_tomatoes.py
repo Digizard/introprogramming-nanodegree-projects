@@ -6,14 +6,15 @@ main_page_head = '''
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
     <title>Fresh Tomatoes!</title>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Bootstrap 3 -->
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
     <style type="text/css" media="screen">
         body {
             padding-top: 80px;
@@ -64,31 +65,6 @@ main_page_head = '''
             font-size: 20px;
         }
     </style>
-    <script type="text/javascript" charset="utf-8">
-        // Pause the video when the modal is closed
-        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
-            // Remove the src so the player itself gets removed, as this is the only
-            // reliable way to ensure the video stops playing in IE
-            $("#youtube-video-container").empty();
-        });
-        // Start playing the video whenever the video modal is opened
-        $(document).on('click', '.video-tile', function (event) {
-            var videoYouTubeId = $(this).attr('data-youtube-id')
-            var sourceUrl = 'http://www.youtube.com/embed/' + videoYouTubeId + '?autoplay=1&html5=1';
-            $("#youtube-video-container").empty().append($("<iframe></iframe>", {
-              'id': 'youtube-video',
-              'type': 'text-html',
-              'src': sourceUrl,
-              'frameborder': 0
-            }));
-        });
-        // Animate in the videos when the page loads
-        $(document).ready(function () {
-          $('.video-tile').hide().first().show("fast", function showNext() {
-            $(this).next("div").show("fast", showNext);
-          });
-        });
-    </script>
 </head>
 '''
 
@@ -110,22 +86,74 @@ main_page_content = '''
     </div>
 
     <!-- Main Page Content -->
-    <div class="container">
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <header class="container">
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
             <a class="navbar-brand" href="#">Fresh Tomatoes Videos</a>
+            <ul class="nav nav-pills">
+              {nav_list}
+            </ul>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="container">
+      </nav>
+    </header>
+    <main class="container tab-content">
       {video_tiles}
-    </div>
+    </main>
+'''
+
+main_page_scripts = '''
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#youtube-video-container").empty();
+        });
+        // Start playing the video whenever the video modal is opened
+        $(document).on('click', '.video-tile', function (event) {
+            var videoYouTubeId = $(this).attr('data-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + videoYouTubeId + '?autoplay=1&html5=1';
+            $("#youtube-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'youtube-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Handle content setup when the page loads
+        $(document).ready(function () {
+          activateFirstSelection();
+          delayFadeFirstPane();
+        });
+        // Make active items to be initially selected by default
+        function activateFirstSelection() {
+          activateFirstSelectorItem('li');
+          activateFirstSelectorItem('.tab-pane');
+        }
+        // Add active class to first item of given selector
+        function activateFirstSelectorItem(selector) {
+          var firstSelectorItem = $(selector).first();
+          firstSelectorItem.addClass('active');
+        }
+        // Make slight delay so first content shows fade effect
+        function delayFadeFirstPane() {
+          var firstPane = $('.tab-pane').first();
+          var waitTime = 300;
+
+          setTimeout(function() {
+            if (firstPane.hasClass('active'))
+              firstPane.addClass('in');
+          }, waitTime);
+        }
+    </script>
   </body>
 </html>
 '''
-
 
 # A single video entry html template
 tile_content = '''
@@ -142,12 +170,27 @@ episode_tile_content = tile_content.format(tile_label='''
     <p class="subtitle">{video_title}</p>
     ''')
 
+nav_item_content = '''
+<li><a data-toggle="pill" href="#{playlist_id}">{playlist_name}</a></li>
+'''
 
 
-def create_video_tiles_content(playlists):
+def create_id_format(name):
+    return name.replace(' ', '').lower()
+
+def create_playlist_nav_content(playlists):
+    content=''
+    for playlist in playlists:
+        content += nav_item_content.format(playlist_id=create_id_format(playlist.name), playlist_name=playlist.name)
+
+    return content
+
+
+def create_playlist_tiles_content(playlists):
     # The HTML content for this section of the page
     content = ''
     for playlist in playlists:
+        content += '<div id="{playlist_id}" class="tab-pane fade">'.format(playlist_id=create_id_format(playlist.name))
         for video in playlist.videos:
             # Append the tile for the video with its content filled in
             try:
@@ -164,19 +207,22 @@ def create_video_tiles_content(playlists):
                     youtube_id=video.youtube_id
                 )
 
+        content += '</div>'
+
     return content
 
 
-def open_videos_page(videos):
+def open_playlists_page(playlists):
     # Create or overwrite the output file
     output_file = open('fresh_tomatoes.html', 'w')
 
     # Replace the video tiles placeholder generated content
     rendered_content = main_page_content.format(
-        video_tiles=create_video_tiles_content(videos))
+        nav_list=create_playlist_nav_content(playlists),
+        video_tiles=create_playlist_tiles_content(playlists))
 
     # Output the file
-    output_file.write(main_page_head + rendered_content)
+    output_file.write(main_page_head + rendered_content + main_page_scripts)
     output_file.close()
 
     # open the output file in the browser (in a new tab, if possible)

@@ -28,4 +28,4 @@ season1 = Playlist("Season 1", [
 ])
 
 
-fresh_tomatoes.open_videos_page([trailers, season1])
+fresh_tomatoes.open_playlists_page([trailers, season1])
