@@ -178,10 +178,12 @@ nav_item_content = '''
 def create_id_format(name):
     return name.replace(' ', '').lower()
 
+
 def create_playlist_nav_content(playlists):
-    content=''
+    content = ''
     for playlist in playlists:
-        content += nav_item_content.format(playlist_id=create_id_format(playlist.name), playlist_name=playlist.name)
+        content += nav_item_content.format(
+            playlist_id=create_id_format(playlist.name), playlist_name=playlist.name)
 
     return content
 
@@ -190,7 +192,8 @@ def create_playlist_tiles_content(playlists):
     # The HTML content for this section of the page
     content = ''
     for playlist in playlists:
-        content += '<div id="{playlist_id}" class="tab-pane fade">'.format(playlist_id=create_id_format(playlist.name))
+        content += '<div id="{playlist_id}" class="tab-pane fade">'.format(
+            playlist_id=create_id_format(playlist.name))
         for video in playlist.videos:
             # Append the tile for the video with its content filled in
             try:
