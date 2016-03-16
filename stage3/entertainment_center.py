@@ -1,8 +1,11 @@
+# Uses classes from media to generate and open a video page with fresh_tomatoes
 import fresh_tomatoes
 from media import *
 
+# Title for video page
 page_title = "RWBY Theater"
 
+# Setup playlists
 trailers = Playlist("Trailers", "Trailer", [
     Video("Red Trailer",    "https://www.youtube.com/watch?v=pYW2GmHB5xs"),
     Video("White Trailer",  "https://www.youtube.com/watch?v=Vt9vl8iAN5Q"),

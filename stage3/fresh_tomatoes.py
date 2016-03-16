@@ -1,7 +1,7 @@
 import os
 import webbrowser
 
-# Page top, mostly for title
+# Page top, mostly for title, to avoid string replace conflict with CSS braces
 main_page_title = '''
 <!DOCTYPE html>
 <html lang="en">
@@ -189,8 +189,10 @@ tile_content = '''
 </div>
 '''
 
+# Setup for Video object tile
 video_tile_content = tile_content.format(tile_label='<h2>{video_title}</h2>')
 
+# Setup for Episode object tile
 episode_tile_content = tile_content.format(tile_label='''
     <h2 class="episode-number">{episode_label} {episode_number}</h2>
     <p class="subtitle">{video_title}</p>
@@ -202,20 +204,47 @@ nav_item_content = '''
 
 
 def create_id_format(name):
+    """Create HTML ID from given string.
+
+    Args:
+        name: The name of an item.
+
+    Returns:
+        String: An ID-friendly version of the name.
+
+    """
     return name.replace(' ', '').lower()
 
 
 def create_playlist_nav_content(playlists):
+    """Create the HTML for a navigation button for each playlist.
+
+    Args:
+        playlists: A list of playlists.
+
+    Returns:
+        String: HTML code for navigation buttons.
+
+    """
     content = ''
     for playlist in playlists:
         content += nav_item_content.format(
-            playlist_id=create_id_format(playlist.name), playlist_name=playlist.name)
+            playlist_id=create_id_format(playlist.name),
+            playlist_name=playlist.name)
 
     return content
 
 
 def create_playlist_tiles_content(playlists):
-    # The HTML content for this section of the page
+    """Creates HTML for tiles for each playlist.
+
+    Args:
+        playlists: A list of playlists.
+
+    Returns:
+        String: HTML code for all playlist video tiles.
+
+    """
     content = ''
     for playlist in playlists:
         content += '<div id="{playlist_id}" class="tab-pane fade">'.format(
@@ -243,6 +272,13 @@ def create_playlist_tiles_content(playlists):
 
 
 def open_playlists_page(page_title, playlists):
+    """Opens a webpage generated from the list of playlists.
+
+    Args:
+        page_title: The title of the page.
+        playlists: A list of playlists.
+
+    """
     # Create or overwrite the output file
     output_file = open('fresh_tomatoes.html', 'w')
 
@@ -255,9 +291,10 @@ def open_playlists_page(page_title, playlists):
         video_tiles=create_playlist_tiles_content(playlists))
 
     # Output the file
-    output_file.write(rendered_title + main_page_head + rendered_content + main_page_scripts)
+    output_file.write(
+        rendered_title + main_page_head + rendered_content + main_page_scripts)
     output_file.close()
 
-    # open the output file in the browser (in a new tab, if possible)
+    # Open the output file in the browser (in a new tab, if possible)
     url = os.path.abspath(output_file.name)
     webbrowser.open('file://' + url, new=2)
