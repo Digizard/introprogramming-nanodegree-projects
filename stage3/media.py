@@ -1,10 +1,18 @@
+"""Defines classes for storing and organizing video information."""
 import re
 import webbrowser
 
 
 class Playlist():
 
-    """Collection of videos."""
+    """Collection of videos.
+
+    Attributes:
+        title: Title of playlist.
+        type: Label for each individual video.
+        videos: A list of videos.
+        current: Current position within video list.
+    """
 
     def __init__(self, playlist_title, item_type, videos=[]):
         """Initialize instance of class Playlist.
@@ -44,7 +52,15 @@ class Playlist():
 
 class Video():
 
-    """Video-related information"""
+    """Video-related information
+
+    Attributes:
+        title: Title of video.
+        youtube_url: URL for the video on YouTube.
+        youtube_id: ID of video on YouTube.
+        thumbnail_url: URL to YouTube video image.
+
+    """
 
     def __init__(self, video_title, youtube_url):
         """Initialize instance of class Video.
@@ -65,7 +81,7 @@ class Video():
         webbrowser.open(self.youtube_url)
 
     def setup_youtube_id(self):
-        """Extract the YouTube ID from the URL."""
+        """Extract the YouTube ID from the URL and store it."""
         # Thanks to original fresh_tomatoes.py code from Udacity!
         youtube_id_match = re.search(
             r'(?<=v=)[^&#]+', self.youtube_url) or \
@@ -76,7 +92,15 @@ class Video():
 
 class Episode(Video):
 
-    """Episode-related information."""
+    """Episode-related information.
+
+    Attributes:
+        title: Title of video.
+        youtube_url: URL for the video on YouTube.
+        youtube_id: ID of video on YouTube.
+        thumbnail_url: URL to YouTube video image.
+        number: Number associated with the episode.
+    """
 
     def __init__(self, episode_number, episode_title, youtube_url):
         """Initialize instance of class Episode.

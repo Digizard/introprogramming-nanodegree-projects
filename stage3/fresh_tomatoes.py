@@ -1,5 +1,18 @@
-# This is a modified version of the fresh_tomatoes.py created by Udacity.
-# It creates a page of playlists of videos on YouTube.
+"""Creates a page of playlists of videos on YouTube.
+
+This is a modified version of the fresh_tomatoes.py created by Udacity.
+
+Attributes:
+    main_page_title: <title> section of HTML template.
+    main_page_head: <head> section of HTML template.
+    main_page_content: <body> section of HTML template.
+    main_page_scripts: JavaScript section of HTML template.
+    tile_content: Any video entry tile template.
+    video_tile_content: Video object tile template.
+    episode_tile_content: Episode object tile template.
+    nav_item_content: Navigation button template.
+
+"""
 import os
 import webbrowser
 
@@ -11,7 +24,7 @@ main_page_title = '''
     <title>{title}</title>
 '''
 
-# Styles and scripting for the page
+# Styles for the page
 main_page_head = '''
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -94,7 +107,7 @@ main_page_head = '''
 '''
 
 
-# The main page layout and title bar
+# The main page layout
 main_page_content = '''
   <body>
     <!-- video Video Modal -->
@@ -124,6 +137,7 @@ main_page_content = '''
     </main>
 '''
 
+# Scripts
 main_page_scripts = '''
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -261,7 +275,7 @@ def create_video_tiles_content(playlist):
 
 
 def create_playlists_page(page_title, playlists):
-    """Generates the code for a web page for a list of playlists
+    """Generates the code for a web page for a list of playlists.
 
     Args:
         page_title: The title of the page.

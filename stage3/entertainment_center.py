@@ -1,8 +1,18 @@
-# Uses classes from media to generate and open a video page with fresh_tomatoes
+"""Constructs a RWBY video playlist page.
+
+Attributes:
+    page_title: Title for page.
+    trailers: Playlist of pre-series video trailers.
+    volume1: Playlist of Volume 1 episodes.
+    volume2: Playlist of Volume 2 episodes.
+    volume3: Playlist of Volume 3 episodes.
+    playlists: List of all playlists.
+
+"""
 import fresh_tomatoes
 from media import *
 
-# Title for video page
+# Title for page
 page_title = "RWBY Theater"
 
 # Setup playlists
@@ -116,5 +126,6 @@ volume3 = Playlist("Volume 3", "Chapter", [
                   "https://www.youtube.com/watch?v=hq1lk-QWxNg")
 ])
 
+# Collect playlists and open page
 playlists = [trailers, volume1, volume2, volume3]
 fresh_tomatoes.open_playlists_page(page_title, playlists)
