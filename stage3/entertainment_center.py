@@ -1,14 +1,16 @@
 import fresh_tomatoes
 from media import *
 
-trailers = Playlist("Trailers", [
+page_title = "RWBY Theater"
+
+trailers = Playlist("Trailers", "Trailer", [
     Video("Red Trailer",    "https://www.youtube.com/watch?v=pYW2GmHB5xs"),
     Video("White Trailer",  "https://www.youtube.com/watch?v=Vt9vl8iAN5Q"),
     Video("Black Trailer",  "https://www.youtube.com/watch?v=ImKCt7BD4U4"),
     Video("Yellow Trailer", "https://www.youtube.com/watch?v=QCw_aAS7vWI")
 ])
 
-volume1 = Playlist("Volume 1", [
+volume1 = Playlist("Volume 1", "Chapter", [
     Episode(1,  "Ruby Rose",
                 "https://www.youtube.com/watch?v=-sGiE10zNQM"),
     Episode(2,  "The Shining Beacon",
@@ -43,7 +45,7 @@ volume1 = Playlist("Volume 1", [
                 "https://www.youtube.com/watch?v=3b1gs8KrM-M")
 ])
 
-volume2 = Playlist("Volume 2", [
+volume2 = Playlist("Volume 2", "Chapter", [
     Episode(1,    "Best Day Ever",
                   "https://www.youtube.com/watch?v=PzPZ6joXq5Y"),
     Episode(2,    "Welcome to Beacon",
@@ -76,7 +78,7 @@ volume2 = Playlist("Volume 2", [
                   "https://www.youtube.com/watch?v=-p4iS_p3b8E")
 ])
 
-volume3 = Playlist("Volume 3", [
+volume3 = Playlist("Volume 3", "Chapter", [
     Episode(0.5,  "World of Remnant: Vytal Festival Tournament",
                   "https://www.youtube.com/watch?v=946xgoU4fkQ"),
     Episode(1,    "Round One",
@@ -108,4 +110,4 @@ volume3 = Playlist("Volume 3", [
 ])
 
 playlists = [trailers, volume1, volume2, volume3]
-fresh_tomatoes.open_playlists_page(playlists)
+fresh_tomatoes.open_playlists_page(page_title, playlists)

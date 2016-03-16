@@ -1,13 +1,16 @@
 import os
 import webbrowser
 
-# Styles and scripting for the page
-main_page_head = '''
+# Page top, mostly for title
+main_page_title = '''
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Fresh Tomatoes!</title>
+    <title>{title}</title>
+'''
 
+# Styles and scripting for the page
+main_page_head = '''
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -95,7 +98,7 @@ main_page_content = '''
     <!-- Main Page Content -->
     <header class="container">
       <nav class="navbar navbar-inverse navbar-fixed-top navbar-header" role="navigation">
-        <a class="navbar-brand" href="#">Fresh Tomatoes Videos</a>
+        <a class="navbar-brand" href="#">{title}</a>
         <ul class="nav nav-pills">
           {nav_list}
         </ul>
@@ -173,7 +176,7 @@ tile_content = '''
 video_tile_content = tile_content.format(tile_label='<h2>{video_title}</h2>')
 
 episode_tile_content = tile_content.format(tile_label='''
-    <h2 class="episode-number">Episode {episode_number}</h2>
+    <h2 class="episode-number">{episode_label} {episode_number}</h2>
     <p class="subtitle">{video_title}</p>
     ''')
 
@@ -206,6 +209,7 @@ def create_playlist_tiles_content(playlists):
             try:
                 content += episode_tile_content.format(
                     video_title=video.title,
+                    episode_label=playlist.type,
                     episode_number=video.episode_number,
                     thumbnail_url=video.thumbnail_url,
                     youtube_id=video.youtube_id
@@ -222,17 +226,20 @@ def create_playlist_tiles_content(playlists):
     return content
 
 
-def open_playlists_page(playlists):
+def open_playlists_page(page_title, playlists):
     # Create or overwrite the output file
     output_file = open('fresh_tomatoes.html', 'w')
 
+    rendered_title = main_page_title.format(title=page_title)
+
     # Replace the video tiles placeholder generated content
     rendered_content = main_page_content.format(
+        title=page_title,
         nav_list=create_playlist_nav_content(playlists),
         video_tiles=create_playlist_tiles_content(playlists))
 
     # Output the file
-    output_file.write(main_page_head + rendered_content + main_page_scripts)
+    output_file.write(rendered_title + main_page_head + rendered_content + main_page_scripts)
     output_file.close()
 
     # open the output file in the browser (in a new tab, if possible)

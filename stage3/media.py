@@ -6,8 +6,9 @@ class Playlist():
 
     """Collection of videos."""
 
-    def __init__(self, playlist_name, videos=[]):
+    def __init__(self, playlist_name, item_type, videos=[]):
         self.name = playlist_name
+        self.type = item_type
         self.videos = videos
         self.current = 0
 
