@@ -10,8 +10,9 @@ class Playlist():
     Attributes:
         title: Title of playlist.
         type: Label for each individual video.
-        videos: A list of videos.
-        current: Current position within video list.
+        videos: List of videos.
+        current: Current iterator position within video list.
+
     """
 
     def __init__(self, playlist_title, item_type, videos=[]):
@@ -19,8 +20,8 @@ class Playlist():
 
         Args:
             playlist_title: Title of playlist.
-            item_type: What to refer to each item as.
-            videos: A list of videos.
+            item_type: Label for each individual video.
+            videos: List of videos.
 
         """
         self.title = playlist_title
@@ -36,7 +37,7 @@ class Playlist():
         """Gets next item when Playlist is being iterated.
 
         Returns:
-            Video: The next video in the list.
+            Video: Next video in the list.
 
         Raises:
             StopIteration: If there are no more videos in the list.
@@ -56,7 +57,7 @@ class Video():
 
     Attributes:
         title: Title of video.
-        youtube_url: URL for the video on YouTube.
+        youtube_url: URL for video on YouTube.
         youtube_id: ID of video on YouTube.
         thumbnail_url: URL to YouTube video image.
 
@@ -66,8 +67,8 @@ class Video():
         """Initialize instance of class Video.
 
         Args:
-            video_title: The title of the video.
-            youtube_url: The URL for the video on YouTube.
+            video_title: Title of video.
+            youtube_url: URL for video on YouTube.
 
         """
         self.title = video_title
@@ -95,20 +96,21 @@ class Episode(Video):
     """Episode-related information.
 
     Attributes:
-        title: Title of video.
+        title: Title of episode.
         youtube_url: URL for the video on YouTube.
         youtube_id: ID of video on YouTube.
         thumbnail_url: URL to YouTube video image.
-        number: Number associated with the episode.
+        number: Number associated with episode.
+
     """
 
     def __init__(self, episode_number, episode_title, youtube_url):
         """Initialize instance of class Episode.
 
         Args:
-            episode_number: The number associated with the episode.
-            episode_title: The title of the episode.
-            youtube_url: The URL for the episode on YouTube.
+            episode_number: Number associated with episode.
+            episode_title: Title of episode.
+            youtube_url: URL for the video on YouTube.
 
         """
         Video.__init__(self, episode_title, youtube_url)

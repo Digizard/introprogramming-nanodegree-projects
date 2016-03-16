@@ -282,7 +282,6 @@ def create_playlists_page(page_title, playlists):
         playlists: A list of playlists.
 
     """
-
     rendered_title = main_page_title.format(title=page_title)
 
     # Replace the video tiles' placeholder generated content
@@ -308,6 +307,7 @@ def create_playlist_nav_content(playlists):
 
     """
     content = ''
+
     for playlist in playlists:
         content += nav_item_content.format(
             playlist_id=create_id_format(playlist.title),
@@ -327,6 +327,7 @@ def create_playlist_tiles_content(playlists):
 
     """
     content = ''
+
     for playlist in playlists:
         content += '<div id="{playlist_id}" class="tab-pane fade">'.format(
             playlist_id=create_id_format(playlist.title))
