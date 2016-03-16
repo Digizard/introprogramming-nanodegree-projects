@@ -260,7 +260,7 @@ def create_video_tiles_content(playlist):
             content += episode_tile_content.format(
                 video_title=video.title,
                 episode_label=playlist.type,
-                episode_number=video.episode_number,
+                episode_number=video.number,
                 thumbnail_url=video.thumbnail_url,
                 youtube_id=video.youtube_id
             )

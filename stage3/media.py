@@ -112,4 +112,4 @@ class Episode(Video):
 
         """
         Video.__init__(self, episode_title, youtube_url)
-        self.episode_number = episode_number
+        self.number = episode_number
