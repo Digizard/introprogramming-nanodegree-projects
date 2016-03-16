@@ -106,7 +106,11 @@ volume3 = Playlist("Volume 3", "Chapter", [
     Episode(9.5,  "World of Remnant: The Four Maidens",
                   "https://www.youtube.com/watch?v=2bBSQA3uXVo"),
     Episode(10,   "Battle of Beacon",
-                  "https://www.youtube.com/watch?v=bIKyZi2q8w8")
+                  "https://www.youtube.com/watch?v=bIKyZi2q8w8"),
+    Episode(11,   "Heroes and Monsters",
+                  "https://www.youtube.com/watch?v=pT1XiUbJu_Y"),
+    Episode(12,   "End of the Beginning",
+                  "https://www.youtube.com/watch?v=hq1lk-QWxNg")
 ])
 
 playlists = [trailers, volume1, volume2, volume3]
