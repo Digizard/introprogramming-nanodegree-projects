@@ -1,3 +1,5 @@
+# This is a modified version of the fresh_tomatoes.py created by Udacity.
+# It creates a page of playlists of videos on YouTube.
 import os
 import webbrowser
 
@@ -203,17 +205,82 @@ nav_item_content = '''
 '''
 
 
-def create_id_format(name):
-    """Create HTML ID from given string.
+def open_playlists_page(page_title, playlists):
+    """Opens a webpage generated from the list of playlists.
 
     Args:
-        name: The name of an item.
-
-    Returns:
-        String: An ID-friendly version of the name.
+        page_title: The title of the page.
+        playlists: A list of playlists.
 
     """
-    return name.replace(' ', '').lower()
+    # Create or overwrite the output file
+    output_file = open('fresh_tomatoes.html', 'w')
+
+    # Generate page
+    rendered_page = create_playlists_page(page_title, playlists)
+
+    # Output the file
+    output_file.write(rendered_page)
+    output_file.close()
+
+    # Open the output file in the browser (in a new tab, if possible)
+    url = os.path.abspath(output_file.name)
+    webbrowser.open('file://' + url, new=2)
+
+
+def create_video_tiles_content(playlist):
+    """Creates HTML for tiles for each playlist.
+
+    Args:
+        playlist: A single playlist.
+
+    Returns:
+        String: HTML code for the video tiles for a playlist.
+
+    """
+    content = ''
+
+    for video in playlist.videos:
+        # Append the tile for the video with its content filled in
+        try:
+            content += episode_tile_content.format(
+                video_title=video.title,
+                episode_label=playlist.type,
+                episode_number=video.episode_number,
+                thumbnail_url=video.thumbnail_url,
+                youtube_id=video.youtube_id
+            )
+        except:
+            content += video_tile_content.format(
+                video_title=video.title,
+                thumbnail_url=video.thumbnail_url,
+                youtube_id=video.youtube_id
+            )
+
+    return content
+
+
+def create_playlists_page(page_title, playlists):
+    """Generates the code for a web page for a list of playlists
+
+    Args:
+        page_title: The title of the page.
+        playlists: A list of playlists.
+
+    """
+
+    rendered_title = main_page_title.format(title=page_title)
+
+    # Replace the video tiles' placeholder generated content
+    rendered_content = main_page_content.format(
+        title=page_title,
+        nav_list=create_playlist_nav_content(playlists),
+        video_tiles=create_playlist_tiles_content(playlists))
+
+    rendered_page = rendered_title + main_page_head + \
+        rendered_content + main_page_scripts
+
+    return rendered_page
 
 
 def create_playlist_nav_content(playlists):
@@ -249,52 +316,20 @@ def create_playlist_tiles_content(playlists):
     for playlist in playlists:
         content += '<div id="{playlist_id}" class="tab-pane fade">'.format(
             playlist_id=create_id_format(playlist.title))
-        for video in playlist.videos:
-            # Append the tile for the video with its content filled in
-            try:
-                content += episode_tile_content.format(
-                    video_title=video.title,
-                    episode_label=playlist.type,
-                    episode_number=video.episode_number,
-                    thumbnail_url=video.thumbnail_url,
-                    youtube_id=video.youtube_id
-                )
-            except:
-                content += video_tile_content.format(
-                    video_title=video.title,
-                    thumbnail_url=video.thumbnail_url,
-                    youtube_id=video.youtube_id
-                )
-
+        content += create_video_tiles_content(playlist)
         content += '</div>'
 
     return content
 
 
-def open_playlists_page(page_title, playlists):
-    """Opens a webpage generated from the list of playlists.
+def create_id_format(name):
+    """Create HTML ID from given string.
 
     Args:
-        page_title: The title of the page.
-        playlists: A list of playlists.
+        name: The name of an item.
+
+    Returns:
+        String: An ID-friendly version of the name.
 
     """
-    # Create or overwrite the output file
-    output_file = open('fresh_tomatoes.html', 'w')
-
-    rendered_title = main_page_title.format(title=page_title)
-
-    # Replace the video tiles placeholder generated content
-    rendered_content = main_page_content.format(
-        title=page_title,
-        nav_list=create_playlist_nav_content(playlists),
-        video_tiles=create_playlist_tiles_content(playlists))
-
-    # Output the file
-    output_file.write(
-        rendered_title + main_page_head + rendered_content + main_page_scripts)
-    output_file.close()
-
-    # Open the output file in the browser (in a new tab, if possible)
-    url = os.path.abspath(output_file.name)
-    webbrowser.open('file://' + url, new=2)
+    return name.replace(' ', '').lower()
