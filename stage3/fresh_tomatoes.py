@@ -133,9 +133,11 @@ main_page_scripts = '''
             // reliable way to ensure the video stops playing in IE
             $("#youtube-video-container").empty();
         });
-        // Slide up the window to the top on category change
-        $(".pill").on('click', function (event) {
+        function scrollPageToTop() {
             $("html, body").animate({ scrollTop: 0 }, "slow");
+        }
+        $(".pill").on('click', function (event) {
+            scrollPageToTop();
         });
         // Start playing the video whenever the video modal is opened
         $(document).on('click', '.video-tile', function (event) {
@@ -152,6 +154,7 @@ main_page_scripts = '''
         $(document).ready(function () {
           activateFirstSelection();
           delayFadeFirstPane();
+          scrollPageToTop();
         });
         // Make active items to be initially selected by default
         function activateFirstSelection() {
