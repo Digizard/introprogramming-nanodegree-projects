@@ -22,7 +22,20 @@ main_page_head = '''
         body {
             padding-top: 80px;
         }
+        a,
+        a:hover,
+        a:active,
+        a:focus {
+            outline: 0 none;
+        }
+        /* Need to override Bootstrap */
+        .nav-pills > li.active > a,
+        .nav-pills > li.active > a:focus,
+        .nav-pills > li.active > a:hover {
+            background-color: #ce4844;
+        }
         .pill {
+            color: #ce4844;
             margin-top: 5px;
         }
         #video .modal-dialog {
