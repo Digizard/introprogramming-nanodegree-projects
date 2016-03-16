@@ -19,6 +19,9 @@ main_page_head = '''
         body {
             padding-top: 80px;
         }
+        .pill {
+            margin-top: 5px;
+        }
         #video .modal-dialog {
             margin-top: 200px;
             width: 640px;
@@ -63,6 +66,10 @@ main_page_head = '''
         }
         .subtitle {
             font-size: 20px;
+            height: 2em;
+            line-height: 1em;
+            margin: 0;
+            padding: 0;
         }
     </style>
 </head>
@@ -87,15 +94,11 @@ main_page_content = '''
 
     <!-- Main Page Content -->
     <header class="container">
-      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Fresh Tomatoes Videos</a>
-            <ul class="nav nav-pills">
-              {nav_list}
-            </ul>
-          </div>
-        </div>
+      <nav class="navbar navbar-inverse navbar-fixed-top navbar-header" role="navigation">
+        <a class="navbar-brand" href="#">Fresh Tomatoes Videos</a>
+        <ul class="nav nav-pills">
+          {nav_list}
+        </ul>
       </nav>
     </header>
     <main class="container tab-content">
@@ -113,6 +116,10 @@ main_page_scripts = '''
             // Remove the src so the player itself gets removed, as this is the only
             // reliable way to ensure the video stops playing in IE
             $("#youtube-video-container").empty();
+        });
+        // Slide up the window to the top on category change
+        $(".pill").on('click', function (event) {
+            $("html, body").animate({ scrollTop: 0 }, "slow");
         });
         // Start playing the video whenever the video modal is opened
         $(document).on('click', '.video-tile', function (event) {
@@ -171,7 +178,7 @@ episode_tile_content = tile_content.format(tile_label='''
     ''')
 
 nav_item_content = '''
-<li><a data-toggle="pill" href="#{playlist_id}">{playlist_name}</a></li>
+<li><a class="pill" data-toggle="pill" href="#{playlist_id}">{playlist_name}</a></li>
 '''
 
 
