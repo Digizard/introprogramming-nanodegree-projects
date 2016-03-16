@@ -6,16 +6,16 @@ class Playlist():
 
     """Collection of videos."""
 
-    def __init__(self, playlist_name, item_type, videos=[]):
+    def __init__(self, playlist_title, item_type, videos=[]):
         """Initialize instance of class Playlist.
 
         Args:
-            playlist_name: Title of playlist.
+            playlist_title: Title of playlist.
             item_type: What to refer to each item as.
             videos: A list of videos.
 
         """
-        self.name = playlist_name
+        self.title = playlist_title
         self.type = item_type
         self.videos = videos
         self.current = 0
