@@ -6,6 +6,10 @@ These are different sources that helped me to put together my project. I've grou
 Python
 ------
 * ["How to make class iterable?" on Stack Overflow](http://stackoverflow.com/questions/19151/how-to-make-class-iterable)
+* ["Determine the type of an object?" on Stack Overflow](http://stackoverflow.com/questions/2225038/determine-the-type-of-an-object)
+* ["How do you check an object is an instance of 'file'?" on Stack Overflow](http://stackoverflow.com/questions/3783995/how-do-you-check-an-object-is-an-instance-of-file)
+* [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
+* [Example Google Style Python Docstrings](http://sphinxcontrib-napoleon.readthedocs.org/en/latest/example_google.html)
 
 HTML
 ----
