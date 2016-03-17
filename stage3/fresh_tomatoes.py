@@ -37,52 +37,63 @@ main_page_head = '''
         body {
             padding-top: 80px;
         }
+
         a,
         a:hover,
         a:active,
         a:focus {
             outline: 0 none;
         }
+
         /* Need to override Bootstrap */
         .nav-pills > li.active > a,
         .nav-pills > li.active > a:focus,
         .nav-pills > li.active > a:hover {
             background-color: #ce4844;
         }
+
         .pill {
             color: #ce4844;
             margin-top: 5px;
         }
+
         #video .modal-dialog {
             margin-top: 200px;
             width: 640px;
             height: 480px;
         }
+
         .hanging-close {
             position: absolute;
             top: -12px;
             right: -12px;
             z-index: 9001;
         }
+
         #youtube-video {
             width: 100%;
             height: 100%;
         }
+
         .video-tile {
             margin-bottom: 20px;
             padding-top: 20px;
         }
+
         .video-tile:hover {
             background-color: #EEE;
             cursor: pointer;
         }
+
         .img-responsive {
             margin: 0 auto;
         }
+
         .scale-media {
             padding-bottom: 56.25%;
             position: relative;
         }
+
         .scale-media iframe {
             border: none;
             height: 100%;
@@ -92,9 +103,11 @@ main_page_head = '''
             top: 0;
             background-color: white;
         }
+
         .episode-number {
             margin-bottom: 5px;
         }
+
         .subtitle {
             font-size: 20px;
             height: 2em;
@@ -143,55 +156,63 @@ main_page_scripts = '''
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" charset="utf-8">
+        // Handle content setup when the page loads
+        $(document).ready(function () {
+            activateFirstSelection();
+            delayFadeFirstPane();
+            scrollPageToTop();
+        });
+
+        // Make active items to be initially selected by default
+        function activateFirstSelection() {
+            activateFirstSelectorItem('li');
+            activateFirstSelectorItem('.tab-pane');
+        }
+
+        // Add active class to first item of given selector
+        function activateFirstSelectorItem(selector) {
+            var firstSelectorItem = $(selector).first();
+            firstSelectorItem.addClass('active');
+        }
+
+        // Make slight delay so first content shows fade effect
+        function delayFadeFirstPane() {
+            var firstPane = $('.tab-pane').first();
+            var waitTime = 300;
+
+            setTimeout(function() {
+                if (firstPane.hasClass('active'))
+                    firstPane.addClass('in');
+            }, waitTime);
+        }
+
+        $(".pill").on('click', function (event) {
+            scrollPageToTop();
+        });
+
+        function scrollPageToTop() {
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+        }
+
+        // Start playing the video whenever the video modal is opened
+        $(document).on('click', '.video-tile', function (event) {
+            var videoYouTubeId = $(this).attr('data-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + videoYouTubeId + '?autoplay=1&html5=1';
+
+            $("#youtube-video-container").empty().append($("<iframe></iframe>", {
+                'id': 'youtube-video',
+                'type': 'text-html',
+                'src': sourceUrl,
+                'frameborder': 0
+            }));
+        });
+
         // Pause the video when the modal is closed
         $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
             // Remove the src so the player itself gets removed, as this is the only
             // reliable way to ensure the video stops playing in IE
             $("#youtube-video-container").empty();
         });
-        function scrollPageToTop() {
-            $("html, body").animate({ scrollTop: 0 }, "slow");
-        }
-        $(".pill").on('click', function (event) {
-            scrollPageToTop();
-        });
-        // Start playing the video whenever the video modal is opened
-        $(document).on('click', '.video-tile', function (event) {
-            var videoYouTubeId = $(this).attr('data-youtube-id')
-            var sourceUrl = 'http://www.youtube.com/embed/' + videoYouTubeId + '?autoplay=1&html5=1';
-            $("#youtube-video-container").empty().append($("<iframe></iframe>", {
-              'id': 'youtube-video',
-              'type': 'text-html',
-              'src': sourceUrl,
-              'frameborder': 0
-            }));
-        });
-        // Handle content setup when the page loads
-        $(document).ready(function () {
-          activateFirstSelection();
-          delayFadeFirstPane();
-          scrollPageToTop();
-        });
-        // Make active items to be initially selected by default
-        function activateFirstSelection() {
-          activateFirstSelectorItem('li');
-          activateFirstSelectorItem('.tab-pane');
-        }
-        // Add active class to first item of given selector
-        function activateFirstSelectorItem(selector) {
-          var firstSelectorItem = $(selector).first();
-          firstSelectorItem.addClass('active');
-        }
-        // Make slight delay so first content shows fade effect
-        function delayFadeFirstPane() {
-          var firstPane = $('.tab-pane').first();
-          var waitTime = 300;
-
-          setTimeout(function() {
-            if (firstPane.hasClass('active'))
-              firstPane.addClass('in');
-          }, waitTime);
-        }
     </script>
   </body>
 </html>
