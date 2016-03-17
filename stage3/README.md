@@ -41,6 +41,12 @@ The newly created `rwby_theater.html` file should automatically be opened in you
 From now on, you can just open this file directly with your browser. You do not have to generate a fresh page each time.
 
 
+Alternative View
+----------------
+
+The generated page is viewable at: http://sittingfox.github.io/introprogramming-nanodegree-projects/stage3/rwby-theater.html
+
+
 How to Customize
 ----------------
 
