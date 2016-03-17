@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RWBY Theater</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+
+        a,
+        a:hover,
+        a:active,
+        a:focus {
+            outline: 0 none;
+        }
+
+        /* Need to override Bootstrap */
+        .nav-pills > li.active > a,
+        .nav-pills > li.active > a:focus,
+        .nav-pills > li.active > a:hover {
+            background-color: #ce4844;
+        }
+
+        .pill {
+            color: #ce4844;
+            margin-top: 5px;
+        }
+
+        #video .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+
+        #youtube-video {
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+
+        .video-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+
+        .img-responsive {
+            margin: 0 auto;
+        }
+
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+
+        .episode-number {
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            height: 2em;
+            line-height: 1em;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+  <body>
+    <!-- video Video Modal -->
+    <div class="modal" id="video">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="youtube-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <header class="container">
+      <nav class="navbar navbar-inverse navbar-fixed-top navbar-header" role="navigation">
+        <a class="navbar-brand" href="#">RWBY Theater</a>
+        <ul class="nav nav-pills">
+          
+<li><a class="pill" data-toggle="pill" href="#trailers">Trailers</a></li>
+
+<li><a class="pill" data-toggle="pill" href="#volume1">Volume 1</a></li>
+
+<li><a class="pill" data-toggle="pill" href="#volume2">Volume 2</a></li>
+
+<li><a class="pill" data-toggle="pill" href="#volume3">Volume 3</a></li>
+
+        </ul>
+      </nav>
+    </header>
+    <main class="container tab-content">
+      <div id="trailers" class="tab-pane fade">
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="pYW2GmHB5xs" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/pYW2GmHB5xs/mqdefault.jpg" alt="Red Trailer thumbnail">
+    <h2>Red Trailer</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="Vt9vl8iAN5Q" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/Vt9vl8iAN5Q/mqdefault.jpg" alt="White Trailer thumbnail">
+    <h2>White Trailer</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="ImKCt7BD4U4" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/ImKCt7BD4U4/mqdefault.jpg" alt="Black Trailer thumbnail">
+    <h2>Black Trailer</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="QCw_aAS7vWI" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/QCw_aAS7vWI/mqdefault.jpg" alt="Yellow Trailer thumbnail">
+    <h2>Yellow Trailer</h2>
+</div>
+</div><div id="volume1" class="tab-pane fade">
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="-sGiE10zNQM" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/-sGiE10zNQM/mqdefault.jpg" alt="Ruby Rose thumbnail">
+    
+    <h2 class="episode-number">Chapter 1</h2>
+    <p class="subtitle">Ruby Rose</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="sLv6FfHlxmI" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/sLv6FfHlxmI/mqdefault.jpg" alt="The Shining Beacon thumbnail">
+    
+    <h2 class="episode-number">Chapter 2</h2>
+    <p class="subtitle">The Shining Beacon</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="-ZwGeYu2pOQ" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/-ZwGeYu2pOQ/mqdefault.jpg" alt="The Shining Beacon, Part 2 thumbnail">
+    
+    <h2 class="episode-number">Chapter 3</h2>
+    <p class="subtitle">The Shining Beacon, Part 2</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="H09KTtyElWQ" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/H09KTtyElWQ/mqdefault.jpg" alt="The First Step thumbnail">
+    
+    <h2 class="episode-number">Chapter 4</h2>
+    <p class="subtitle">The First Step</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="1JZgPfbKbU4" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/1JZgPfbKbU4/mqdefault.jpg" alt="The First Step, Part 2 thumbnail">
+    
+    <h2 class="episode-number">Chapter 5</h2>
+    <p class="subtitle">The First Step, Part 2</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="N1TJ5YA3jfw" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/N1TJ5YA3jfw/mqdefault.jpg" alt="The Emerald Forest thumbnail">
+    
+    <h2 class="episode-number">Chapter 6</h2>
+    <p class="subtitle">The Emerald Forest</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="z8wPhihrzvU" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/z8wPhihrzvU/mqdefault.jpg" alt="The Emerald Forest, Part 2 thumbnail">
+    
+    <h2 class="episode-number">Chapter 7</h2>
+    <p class="subtitle">The Emerald Forest, Part 2</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="ctiDu69kIho" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/ctiDu69kIho/mqdefault.jpg" alt="Players and Pieces thumbnail">
+    
+    <h2 class="episode-number">Chapter 8</h2>
+    <p class="subtitle">Players and Pieces</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="-E6aeUjfBCM" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/-E6aeUjfBCM/mqdefault.jpg" alt="The Badge and The Burden thumbnail">
+    
+    <h2 class="episode-number">Chapter 9</h2>
+    <p class="subtitle">The Badge and The Burden</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="57f_t1ioOws" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/57f_t1ioOws/mqdefault.jpg" alt="The Badge and The Burden Part 2 thumbnail">
+    
+    <h2 class="episode-number">Chapter 10</h2>
+    <p class="subtitle">The Badge and The Burden Part 2</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="N5D0NDAR8sU" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/N5D0NDAR8sU/mqdefault.jpg" alt="Jaunedice thumbnail">
+    
+    <h2 class="episode-number">Chapter 11</h2>
+    <p class="subtitle">Jaunedice</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="M_Loqu0jo7k" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/M_Loqu0jo7k/mqdefault.jpg" alt="Jaunedice, Part 2 thumbnail">
+    
+    <h2 class="episode-number">Chapter 12</h2>
+    <p class="subtitle">Jaunedice, Part 2</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="h0QiT-GxN6k" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/h0QiT-GxN6k/mqdefault.jpg" alt="Forever Fall thumbnail">
+    
+    <h2 class="episode-number">Chapter 13</h2>
+    <p class="subtitle">Forever Fall</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="PS9huFMmSoc" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/PS9huFMmSoc/mqdefault.jpg" alt="Forever Fall, Part 2 thumbnail">
+    
+    <h2 class="episode-number">Chapter 14</h2>
+    <p class="subtitle">Forever Fall, Part 2</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="KHynQoJgbgc" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/KHynQoJgbgc/mqdefault.jpg" alt="The Stray thumbnail">
+    
+    <h2 class="episode-number">Chapter 15</h2>
+    <p class="subtitle">The Stray</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="3b1gs8KrM-M" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/3b1gs8KrM-M/mqdefault.jpg" alt="Black and White thumbnail">
+    
+    <h2 class="episode-number">Chapter 16</h2>
+    <p class="subtitle">Black and White</p>
+    
+</div>
+</div><div id="volume2" class="tab-pane fade">
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="PzPZ6joXq5Y" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/PzPZ6joXq5Y/mqdefault.jpg" alt="Best Day Ever thumbnail">
+    
+    <h2 class="episode-number">Chapter 1</h2>
+    <p class="subtitle">Best Day Ever</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="bdiV-w3yXos" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/bdiV-w3yXos/mqdefault.jpg" alt="Welcome to Beacon thumbnail">
+    
+    <h2 class="episode-number">Chapter 2</h2>
+    <p class="subtitle">Welcome to Beacon</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="mj3jfqPwJEk" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/mj3jfqPwJEk/mqdefault.jpg" alt="A Minor Hiccup thumbnail">
+    
+    <h2 class="episode-number">Chapter 3</h2>
+    <p class="subtitle">A Minor Hiccup</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="a1EuyliSO_Q" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/a1EuyliSO_Q/mqdefault.jpg" alt="Painting the Town... thumbnail">
+    
+    <h2 class="episode-number">Chapter 4</h2>
+    <p class="subtitle">Painting the Town...</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="9BJc7nrMnc4" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/9BJc7nrMnc4/mqdefault.jpg" alt="World of Remnant: Dust thumbnail">
+    
+    <h2 class="episode-number">Chapter 4.5</h2>
+    <p class="subtitle">World of Remnant: Dust</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="nur1pCHD4hU" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/nur1pCHD4hU/mqdefault.jpg" alt="Extracurricular thumbnail">
+    
+    <h2 class="episode-number">Chapter 5</h2>
+    <p class="subtitle">Extracurricular</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="i7wkw3yEbvQ" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/i7wkw3yEbvQ/mqdefault.jpg" alt="Burning the Candle thumbnail">
+    
+    <h2 class="episode-number">Chapter 6</h2>
+    <p class="subtitle">Burning the Candle</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="0-f-mGvOba8" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/0-f-mGvOba8/mqdefault.jpg" alt="Dance Dance Infiltration thumbnail">
+    
+    <h2 class="episode-number">Chapter 7</h2>
+    <p class="subtitle">Dance Dance Infiltration</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="AvUT2rHKJDs" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/AvUT2rHKJDs/mqdefault.jpg" alt="World of Remnant: Kingdoms thumbnail">
+    
+    <h2 class="episode-number">Chapter 7.5</h2>
+    <p class="subtitle">World of Remnant: Kingdoms</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="bSdejzDaQEU" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/bSdejzDaQEU/mqdefault.jpg" alt="Field Trip thumbnail">
+    
+    <h2 class="episode-number">Chapter 8</h2>
+    <p class="subtitle">Field Trip</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="GJGSywhNk8Q" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/GJGSywhNk8Q/mqdefault.jpg" alt="Search and Destroy thumbnail">
+    
+    <h2 class="episode-number">Chapter 9</h2>
+    <p class="subtitle">Search and Destroy</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="lD4x6NiTiM4" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/lD4x6NiTiM4/mqdefault.jpg" alt="Mountain Glenn thumbnail">
+    
+    <h2 class="episode-number">Chapter 10</h2>
+    <p class="subtitle">Mountain Glenn</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="-PE66fmjZ0I" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/-PE66fmjZ0I/mqdefault.jpg" alt="World of Remnant: Grimm thumbnail">
+    
+    <h2 class="episode-number">Chapter 10.5</h2>
+    <p class="subtitle">World of Remnant: Grimm</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="CUYhvPoxuas" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/CUYhvPoxuas/mqdefault.jpg" alt="No Brakes thumbnail">
+    
+    <h2 class="episode-number">Chapter 11</h2>
+    <p class="subtitle">No Brakes</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="-p4iS_p3b8E" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/-p4iS_p3b8E/mqdefault.jpg" alt="Breach thumbnail">
+    
+    <h2 class="episode-number">Chapter 12</h2>
+    <p class="subtitle">Breach</p>
+    
+</div>
+</div><div id="volume3" class="tab-pane fade">
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="946xgoU4fkQ" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/946xgoU4fkQ/mqdefault.jpg" alt="World of Remnant: Vytal Festival Tournament thumbnail">
+    
+    <h2 class="episode-number">Chapter 0.5</h2>
+    <p class="subtitle">World of Remnant: Vytal Festival Tournament</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="W9wyWgvyp0s" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/W9wyWgvyp0s/mqdefault.jpg" alt="Round One thumbnail">
+    
+    <h2 class="episode-number">Chapter 1</h2>
+    <p class="subtitle">Round One</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="RzEo0F8thL4" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/RzEo0F8thL4/mqdefault.jpg" alt="New Challengers... thumbnail">
+    
+    <h2 class="episode-number">Chapter 2</h2>
+    <p class="subtitle">New Challengers...</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="vCO2mw4SlDM" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/vCO2mw4SlDM/mqdefault.jpg" alt="It's Brawl in the Family thumbnail">
+    
+    <h2 class="episode-number">Chapter 3</h2>
+    <p class="subtitle">It's Brawl in the Family</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="k6rZFLYHZfI" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/k6rZFLYHZfI/mqdefault.jpg" alt="World of Remnant: Huntsmen thumbnail">
+    
+    <h2 class="episode-number">Chapter 3.5</h2>
+    <p class="subtitle">World of Remnant: Huntsmen</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="fBy2W99zaLQ" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/fBy2W99zaLQ/mqdefault.jpg" alt="Lessons Learned thumbnail">
+    
+    <h2 class="episode-number">Chapter 4</h2>
+    <p class="subtitle">Lessons Learned</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="G5uFH7gIClw" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/G5uFH7gIClw/mqdefault.jpg" alt="Never Miss a Beat thumbnail">
+    
+    <h2 class="episode-number">Chapter 5</h2>
+    <p class="subtitle">Never Miss a Beat</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="moxtu3AuA4s" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/moxtu3AuA4s/mqdefault.jpg" alt="Fall thumbnail">
+    
+    <h2 class="episode-number">Chapter 6</h2>
+    <p class="subtitle">Fall</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="yiJU9QeG89g" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/yiJU9QeG89g/mqdefault.jpg" alt="World of Remnant: Cross Continental Transmit System thumbnail">
+    
+    <h2 class="episode-number">Chapter 6.5</h2>
+    <p class="subtitle">World of Remnant: Cross Continental Transmit System</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="FFf7qoIDYuQ" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/FFf7qoIDYuQ/mqdefault.jpg" alt="Beginning of the End thumbnail">
+    
+    <h2 class="episode-number">Chapter 7</h2>
+    <p class="subtitle">Beginning of the End</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="u7uU_tKYHiM" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/u7uU_tKYHiM/mqdefault.jpg" alt="Destiny thumbnail">
+    
+    <h2 class="episode-number">Chapter 8</h2>
+    <p class="subtitle">Destiny</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="_iq4xplqeI0" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/_iq4xplqeI0/mqdefault.jpg" alt="PvP thumbnail">
+    
+    <h2 class="episode-number">Chapter 9</h2>
+    <p class="subtitle">PvP</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="2bBSQA3uXVo" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/2bBSQA3uXVo/mqdefault.jpg" alt="World of Remnant: The Four Maidens thumbnail">
+    
+    <h2 class="episode-number">Chapter 9.5</h2>
+    <p class="subtitle">World of Remnant: The Four Maidens</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="bIKyZi2q8w8" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/bIKyZi2q8w8/mqdefault.jpg" alt="Battle of Beacon thumbnail">
+    
+    <h2 class="episode-number">Chapter 10</h2>
+    <p class="subtitle">Battle of Beacon</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="pT1XiUbJu_Y" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/pT1XiUbJu_Y/mqdefault.jpg" alt="Heroes and Monsters thumbnail">
+    
+    <h2 class="episode-number">Chapter 11</h2>
+    <p class="subtitle">Heroes and Monsters</p>
+    
+</div>
+
+<div class="col-md-6 col-lg-4 video-tile text-center" data-youtube-id="hq1lk-QWxNg" data-toggle="modal" data-target="#video">
+    <img class="img-responsive" src="http://img.youtube.com/vi/hq1lk-QWxNg/mqdefault.jpg" alt="End of the Beginning thumbnail">
+    
+    <h2 class="episode-number">Chapter 12</h2>
+    <p class="subtitle">End of the Beginning</p>
+    
+</div>
+</div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        // Handle content setup when the page loads
+        $(document).ready(function () {
+            activateFirstSelection();
+            delayFadeFirstPane();
+            scrollPageToTop();
+        });
+
+        // Make active items to be initially selected by default
+        function activateFirstSelection() {
+            activateFirstSelectorItem('li');
+            activateFirstSelectorItem('.tab-pane');
+        }
+
+        // Add active class to first item of given selector
+        function activateFirstSelectorItem(selector) {
+            var firstSelectorItem = $(selector).first();
+            firstSelectorItem.addClass('active');
+        }
+
+        // Make slight delay so first content shows fade effect
+        function delayFadeFirstPane() {
+            var firstPane = $('.tab-pane').first();
+            var waitTime = 300;
+
+            setTimeout(function() {
+                if (firstPane.hasClass('active'))
+                    firstPane.addClass('in');
+            }, waitTime);
+        }
+
+        $(".pill").on('click', function (event) {
+            scrollPageToTop();
+        });
+
+        function scrollPageToTop() {
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+        }
+
+        // Start playing the video whenever the video modal is opened
+        $(document).on('click', '.video-tile', function (event) {
+            var videoYouTubeId = $(this).attr('data-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + videoYouTubeId + '?autoplay=1&html5=1';
+
+            $("#youtube-video-container").empty().append($("<iframe></iframe>", {
+                'id': 'youtube-video',
+                'type': 'text-html',
+                'src': sourceUrl,
+                'frameborder': 0
+            }));
+        });
+
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#youtube-video-container").empty();
+        });
+    </script>
+  </body>
+</html>
