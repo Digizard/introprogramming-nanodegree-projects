@@ -84,8 +84,7 @@ class Video():
     def setup_youtube_id(self):
         """Extract the YouTube ID from the URL and store it."""
         # Thanks to original fresh_tomatoes.py code from Udacity!
-        youtube_id_match = re.search(
-            r'(?<=v=)[^&#]+', self.youtube_url) or \
+        youtube_id_match = re.search(r'(?<=v=)[^&#]+', self.youtube_url) or \
             re.search(r'(?<=be/)[^&#]+', self.youtube_url)
         self.youtube_id = (youtube_id_match.group(0) if youtube_id_match
                            else None)
