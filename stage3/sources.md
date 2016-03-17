@@ -10,6 +10,8 @@ Python
 * ["How do you check an object is an instance of 'file'?" on Stack Overflow](http://stackoverflow.com/questions/3783995/how-do-you-check-an-object-is-an-instance-of-file)
 * [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
 * [Example Google Style Python Docstrings](http://sphinxcontrib-napoleon.readthedocs.org/en/latest/example_google.html)
+* ["Python/Regex Partial String Replacement" on Stack Overflow](http://stackoverflow.com/questions/28551097/python-regex-partial-string-replacement)
+* ["Regular Expression HOWTO" in Python Docs](https://docs.python.org/2.7/howto/regex.html)
 
 HTML
 ----
