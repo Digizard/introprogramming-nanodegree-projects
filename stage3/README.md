@@ -3,7 +3,7 @@ Stage 3: Create a Movie Website
 
 This program is the fourth part of the Introduction to Programming Nanodegree at Udacity.
 
-This is a video page generator. Keeping with the RWBY theme established with the previous projects, I have set it up to create a RWBY video page that displays the different episodes from the series. The videos are from the official Rooster Teeth channel on YouTube.
+This is a video playlist page generator. Keeping with the RWBY theme established with the previous projects, I have set it up to create a RWBY video page that displays the different episodes from the series. The videos are from the official Rooster Teeth channel on YouTube.
 
 `fresh_tomatoes.py` is a modified version of the one provided by Udacity.
 
@@ -36,7 +36,9 @@ Open up `entertainment_center.py` in IDLE. In the menu, go to _Run_ and then _Ru
 
 ### Step 3
 
-A new file named `fresh_tomatoes.html` will be created within the directory. Open this with your browser, which you can usually do by just double-clicking the file.
+The newly created `rwby_theater.html` file should automatically be opened in your browser.
+
+From now on, you can just open this file directly with your browser. You do not have to generate a fresh page each time.
 
 
 How to Customize
