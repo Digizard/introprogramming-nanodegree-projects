@@ -14,6 +14,7 @@ Attributes:
 
 """
 import os
+import re
 import webbrowser
 
 # Page top, mostly for title, to avoid string replace conflict with CSS braces
@@ -249,7 +250,8 @@ def open_playlists_page(page_title, playlists):
 
     """
     # Create or overwrite the output file
-    output_file = open('fresh_tomatoes.html', 'w')
+    filename = create_html_format(page_title) + '.html'
+    output_file = open(filename, 'w')
 
     # Generate page
     rendered_page = create_playlists_page(page_title, playlists)
@@ -331,7 +333,7 @@ def create_playlist_nav_content(playlists):
 
     for playlist in playlists:
         content += nav_item_content.format(
-            playlist_id=create_id_format(playlist.title),
+            playlist_id=create_html_format(playlist.title),
             playlist_name=playlist.title)
 
     return content
@@ -351,21 +353,25 @@ def create_playlist_tiles_content(playlists):
 
     for playlist in playlists:
         content += '<div id="{playlist_id}" class="tab-pane fade">'.format(
-            playlist_id=create_id_format(playlist.title))
+            playlist_id=create_html_format(playlist.title))
         content += create_video_tiles_content(playlist)
         content += '</div>'
 
     return content
 
 
-def create_id_format(name):
-    """Create HTML ID from given string.
+def create_html_format(name):
+    """Turn given name into an HTML-friendly format.
 
     Args:
-        name: The name of an item.
+        name: Name to be changed.
 
     Returns:
-        String: An ID-friendly version of the name.
+        String: Lowercase version of the name with no spaces.
 
     """
-    return name.replace(' ', '').lower()
+    new_name = name.lower()
+    new_name = re.sub(r'(?= \d).', "", new_name)
+    new_name = new_name.replace(' ', '-')
+
+    return new_name
