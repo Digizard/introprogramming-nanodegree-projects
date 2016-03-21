@@ -8,13 +8,8 @@
 
 
 CREATE TABLE players ( id SERIAL,
-					   name TEXT );
+                       name TEXT );
 
 
-CREATE TABLE pairings ( round INT,
-                        first_id INT,
-                        second_id INT );
-
-CREATE TABLE outcomes ( round INT,
-						winner_id INT,
-						loser_id INT );
+CREATE TABLE matches ( winner SMALLINT,
+                       loser SMALLINT );

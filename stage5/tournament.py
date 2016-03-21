@@ -16,8 +16,7 @@ def deleteMatches():
     DB = connect()
     cursor = DB.cursor()
 
-    cursor.execute("DELETE FROM pairings;")
-    cursor.execute("DELETE FROM outcomes;")
+    cursor.execute("DELETE FROM matches;")
 
     DB.commit()
     DB.close()
@@ -90,18 +89,18 @@ def playerStandings():
                     ELSE match_count.matches
                     END
             FROM players LEFT JOIN
-                (SELECT winner_id, count(winner_id) AS wins
-                    FROM outcomes
-                    GROUP BY winner_id) AS wins_table
-            ON players.id = wins_table.winner_id
+                (SELECT winner, count(winner) AS wins
+                    FROM matches
+                    GROUP BY winner) AS wins_table
+            ON players.id = wins_table.winner
             LEFT JOIN
                 (SELECT check_in.id, count(*) AS matches
                     FROM (
-                        (SELECT first_id AS id
-                            FROM pairings)
+                        (SELECT winner AS id
+                            FROM matches)
                         UNION
-                        (SELECT second_id AS id
-                            FROM pairings)) AS check_in
+                        (SELECT loser AS id
+                            FROM matches)) AS check_in
                     GROUP BY check_in.id) AS match_count
             ON players.id = match_count.id
             ORDER BY wins DESC;
