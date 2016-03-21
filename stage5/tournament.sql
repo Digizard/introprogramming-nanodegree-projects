@@ -7,10 +7,14 @@
 -- these lines here.
 
 
-CREATE TABLE players ( name TEXT,
-                       id SERIAL );
+CREATE TABLE players ( id SERIAL,
+					   name TEXT );
 
 
-CREATE TABLE matches ( round INT,
-                       first_id INT,
-                       second_id INT);
+CREATE TABLE pairings ( round INT,
+                        first_id INT,
+                        second_id INT );
+
+CREATE TABLE outcomes ( round INT,
+						winner_id INT,
+						loser_id INT );

@@ -16,7 +16,8 @@ def deleteMatches():
     DB = connect()
     cursor = DB.cursor()
 
-    cursor.execute("DELETE FROM matches;")
+    cursor.execute("DELETE FROM pairings;")
+    cursor.execute("DELETE FROM outcomes;")
 
     DB.commit()
     DB.close()
@@ -76,6 +77,41 @@ def playerStandings():
         wins: the number of matches the player has won
         matches: the number of matches the player has played
     """
+    DB = connect()
+    cursor = DB.cursor()
+
+    cursor.execute("""
+        SELECT players.id,
+               players.name,
+               CASE WHEN wins_table.wins IS NULL THEN 0
+                    ELSE wins_table.wins
+                    END,
+               CASE WHEN match_count.matches IS NULL THEN 0
+                    ELSE match_count.matches
+                    END
+            FROM players LEFT JOIN
+                (SELECT winner_id, count(winner_id) AS wins
+                    FROM outcomes
+                    GROUP BY winner_id) AS wins_table
+            ON players.id = wins_table.winner_id
+            LEFT JOIN
+                (SELECT check_in.id, count(*) AS matches
+                    FROM (
+                        (SELECT first_id AS id
+                            FROM pairings)
+                        UNION
+                        (SELECT second_id AS id
+                            FROM pairings)) AS check_in
+                    GROUP BY check_in.id) AS match_count
+            ON players.id = match_count.id
+            ORDER BY wins DESC;
+        """)
+
+    standings = cursor.fetchall()
+
+    DB.close()
+
+    return standings
 
 
 def reportMatch(winner, loser):
