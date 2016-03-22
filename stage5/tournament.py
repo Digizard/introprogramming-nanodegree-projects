@@ -79,33 +79,7 @@ def playerStandings():
     DB = connect()
     cursor = DB.cursor()
 
-    cursor.execute("""
-        SELECT players.id,
-               players.name,
-               CASE WHEN wins_table.wins IS NULL THEN 0
-                    ELSE wins_table.wins
-                    END,
-               CASE WHEN match_count.matches IS NULL THEN 0
-                    ELSE match_count.matches
-                    END
-            FROM players LEFT JOIN
-                (SELECT winner, count(winner) AS wins
-                    FROM matches
-                    GROUP BY winner) AS wins_table
-            ON players.id = wins_table.winner
-            LEFT JOIN
-                (SELECT check_in.id, count(*) AS matches
-                    FROM (
-                        (SELECT winner AS id
-                            FROM matches)
-                        UNION
-                        (SELECT loser AS id
-                            FROM matches)) AS check_in
-                    GROUP BY check_in.id) AS match_count
-            ON players.id = match_count.id
-            ORDER BY wins DESC;
-        """)
-
+    cursor.execute("SELECT * FROM player_standings")
     standings = cursor.fetchall()
 
     DB.close()
@@ -144,5 +118,17 @@ def swissPairings():
         id2: the second player's unique id
         name2: the second player's name
     """
+    DB = connect()
+    cursor = DB.cursor()
 
+    cursor.execute("""
+        SELECT odd_standings.id, odd_standings.name,
+               even_standings.id, even_standings.name
+            FROM odd_standings, even_standings
+            WHERE odd_standings.row = even_standings.row - 1;
+        """)
+    pairings = cursor.fetchall()
 
+    DB.close()
+
+    return pairings
