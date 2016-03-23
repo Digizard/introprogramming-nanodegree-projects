@@ -8,13 +8,13 @@
 
 
 CREATE TABLE players
-    ( id SERIAL,
+    ( id SERIAL PRIMARY KEY,
       name TEXT );
 
 
 CREATE TABLE matches
-    ( winner SMALLINT,
-      loser SMALLINT );
+    ( winner SMALLINT REFERENCES players (id),
+      loser SMALLINT REFERENCES players (id) );
 
 
 CREATE VIEW player_standings AS
