@@ -121,12 +121,7 @@ def swissPairings():
     DB = connect()
     cursor = DB.cursor()
 
-    cursor.execute("""
-        SELECT odd_standings.id, odd_standings.name,
-               even_standings.id, even_standings.name
-            FROM odd_standings, even_standings
-            WHERE odd_standings.row = even_standings.row - 1;
-        """)
+    cursor.execute("SELECT * FROM swiss_pairings;")
     pairings = cursor.fetchall()
 
     DB.close()

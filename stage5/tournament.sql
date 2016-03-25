@@ -60,3 +60,12 @@ CREATE VIEW even_standings AS
     SELECT *
         FROM numbered_standings
         WHERE row % 2 = 0;
+
+
+CREATE VIEW swiss_pairings AS
+    SELECT odd_standings.id AS id1,
+           odd_standings.name AS name1,
+           even_standings.id AS id2,
+           even_standings.name AS name2
+        FROM odd_standings, even_standings
+        WHERE odd_standings.row = even_standings.row - 1;
