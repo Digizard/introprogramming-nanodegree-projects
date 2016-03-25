@@ -1,23 +1,34 @@
 -- Table definitions for the tournament project.
---
--- Put your SQL 'create table' statements in this file; also 'create view'
--- statements if you choose to use it.
---
--- You can write comments in this file by starting them with two dashes, like
--- these lines here.
 
 
 CREATE TABLE players
+-- Table of all players
+--
+-- Columns:
+--    id: Unique identifier for each player.
+--    name: Name associated with player.
     ( id SERIAL PRIMARY KEY,
       name TEXT );
 
 
 CREATE TABLE matches
+-- Table of all matches
+--
+-- Columns:
+--     winner: ID of winning player.
+--     loser: ID of losing player.
     ( winner SMALLINT REFERENCES players (id),
       loser SMALLINT REFERENCES players (id) );
 
 
 CREATE VIEW player_standings AS
+-- Combination of player data.
+--
+-- Columns:
+--     id: Unique identifier for each player.
+--     name: Name associated with player.
+--     wins: Number of match victories for player.
+--     matches: Number of matches the player has participated in.
     SELECT players.id,
              players.name,
              CASE WHEN wins_table.wins IS NULL THEN 0
@@ -46,23 +57,54 @@ CREATE VIEW player_standings AS
 
 
 CREATE VIEW numbered_standings AS
+-- Numbers each row in the player standings.
+--
+-- Columns:
+--     id: Unique identifier for each player.
+--     name: Name associated with player.
+--     wins: Number of match victories for player.
+--     matches: Number of matches the player has participated in.
+--     row: Counting value for row number.
     SELECT *, row_number() OVER(ORDER BY wins DESC) AS row
         FROM player_standings;
 
 
 CREATE VIEW odd_standings AS
+-- Odd-numbered rows in player standings.
+--
+-- Columns:
+--     id: Unique identifier for each player.
+--     name: Name associated with player.
+--     wins: Number of match victories for player.
+--     matches: Number of matches the player has participated in.
+--     row: Counting value for row number. All odd numbers.
     SELECT *
         FROM numbered_standings
         WHERE row % 2 = 1;
 
 
 CREATE VIEW even_standings AS
+-- Even-numbered rows in player standings.
+--
+-- Columns:
+--     id: Unique identifier for each player.
+--     name: Name associated with player.
+--     wins: Number of match victories for player.
+--     matches: Number of matches the player has participated in.
+--     row: Counting value for row number. All even numbers.
     SELECT *
         FROM numbered_standings
         WHERE row % 2 = 0;
 
 
 CREATE VIEW swiss_pairings AS
+-- Pairs of players.
+--
+-- Columns:
+--     id1: ID of the first player.
+--     name1: Name of the first player.
+--     id2: ID of the second player.
+--     name2: Name of the second player.
     SELECT odd_standings.id AS id1,
            odd_standings.name AS name1,
            even_standings.id AS id2,
