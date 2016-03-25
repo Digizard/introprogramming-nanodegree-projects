@@ -1,24 +1,26 @@
 -- Table definitions for the tournament project.
 
 
-CREATE TABLE players
+CREATE TABLE players (
 -- Table of all players
 --
 -- Columns:
 --    id: Unique identifier for each player.
 --    name: Name associated with player.
-    ( id SERIAL PRIMARY KEY,
-      name TEXT );
+    id SERIAL PRIMARY KEY,
+    name TEXT
+);
 
 
-CREATE TABLE matches
+CREATE TABLE matches (
 -- Table of all matches
 --
 -- Columns:
 --     winner: ID of winning player.
 --     loser: ID of losing player.
-    ( winner SMALLINT REFERENCES players (id),
-      loser SMALLINT REFERENCES players (id) );
+    winner SMALLINT REFERENCES players (id),
+    loser SMALLINT REFERENCES players (id)
+);
 
 
 CREATE VIEW player_standings AS
@@ -30,29 +32,34 @@ CREATE VIEW player_standings AS
 --     wins: Number of match victories for player.
 --     matches: Number of matches the player has participated in.
     SELECT players.id,
-             players.name,
-             CASE WHEN wins_table.wins IS NULL THEN 0
-                  ELSE wins_table.wins
-                  END,
-            CASE WHEN match_count.matches IS NULL THEN 0
-                  ELSE match_count.matches
-                  END
-        FROM players LEFT JOIN
-            (SELECT winner, count(winner) AS wins
+           players.name,
+           CASE WHEN wins_table.wins IS NULL THEN 0
+                ELSE wins_table.wins
+                END,
+           CASE WHEN match_count.matches IS NULL THEN 0
+                ELSE match_count.matches
+                END
+        FROM players
+             LEFT JOIN
+             (SELECT winner, count(winner) AS wins
                 FROM matches
-                GROUP BY winner) AS wins_table
-        ON players.id = wins_table.winner
-        LEFT JOIN
-            (SELECT check_in.id, count(*) AS matches
-                FROM (
-                    (SELECT winner AS id
-                        FROM matches)
-                    UNION
-                    (SELECT loser AS id
-                        FROM matches)
+                GROUP BY winner
+             ) AS wins_table
+             ON players.id = wins_table.winner
+             LEFT JOIN
+                (SELECT check_in.id, count(*) AS matches
+                    FROM (
+                        (SELECT winner AS id
+                            FROM matches
+                        )
+                        UNION
+                        (SELECT loser AS id
+                            FROM matches
+                        )
                     ) AS check_in
-                GROUP BY check_in.id) AS match_count
-        ON players.id = match_count.id
+                    GROUP BY check_in.id
+                ) AS match_count
+            ON players.id = match_count.id
         ORDER BY wins DESC;
 
 
