@@ -10,6 +10,14 @@ This does not follow the Swiss system entirely, being a more simplified version.
 The work in `tournament.sql` is all my own, with all the function code besides the `connect` function also done by me. Udacity provided the rest of  `tournament.py` and created `tournament_test.py` entirely.
 
 
+Requirements
+------------
+
+Python 2.7 should be installed.
+
+This project also makes use of PostgreSQL, but the instructions below will walk through setting up a virtual machine with PostgreSQL.
+
+
 How to Setup VM
 ---------------
 
@@ -17,7 +25,7 @@ These instructions setup a virtual machine, which will be assumed to be used wit
 
 ### Step 1
 
-Install Git, [Vagrant](https://www.vagrantup.com/downloads.html), and [VirtualBox](https://www.virtualbox.org/wiki/Downloads). Ubuntu 14.04 users should install VirtualBox from the repositories.
+Install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads). Ubuntu 14.04 users should install VirtualBox from the repositories.
 
 ### Step 2
 
@@ -33,8 +41,8 @@ vagrant up
 Vagrant will then setup a virtual machine.
 
 
-How to Run Project Files
-------------------------
+How to Run Project
+------------------
 
 ### Step 1
 
@@ -97,8 +105,8 @@ python tournament_test.py
 ```
 
 
-How to Run Project After Setup
-------------------------------
+How to Run Project Afterward
+----------------------------
 
 Once you have done all the previous steps, there's only a few you need to repeat whenever you want to run this project later on.
 
