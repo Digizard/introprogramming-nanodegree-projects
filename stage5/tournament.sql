@@ -45,6 +45,11 @@ CREATE VIEW player_standings AS
                 FROM matches
                 GROUP BY winner
              ) AS wins_table
+             -- Each winner's number of wins.
+             --
+             -- Columns:
+             --     winner: Unique identifier for each winning player.
+             --     wins: Number of match victories for player.
              ON players.id = wins_table.winner
              LEFT JOIN
                 (SELECT check_in.id, count(*) AS matches
@@ -57,8 +62,21 @@ CREATE VIEW player_standings AS
                             FROM matches
                         )
                     ) AS check_in
+                    -- All participants of every match. Names are repeated if
+                    -- player participates in multiple matches.
+                    --
+                    -- Columns:
+                    --     id: Unique identifier for each player.
+                    --     matches: Setup for counting matches.
                     GROUP BY check_in.id
                 ) AS match_count
+                -- Total number of matches for players who have participated in
+                -- at least one.
+                --
+                -- Columns:
+                --     id: Unique identifier for each player.
+                --     matches: Number of matches the player has participated
+                --              in.
             ON players.id = match_count.id
         ORDER BY wins DESC;
 
