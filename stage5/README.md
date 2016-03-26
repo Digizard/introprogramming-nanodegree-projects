@@ -9,6 +9,8 @@ This does not follow the Swiss system entirely, being a more simplified version.
 
 The work in `tournament.sql` is all my own, with all the function code besides the `connect` function also done by me. Udacity provided the rest of  `tournament.py` and created `tournament_test.py` entirely.
 
+---
+
 
 Requirements
 ------------
@@ -16,6 +18,8 @@ Requirements
 Python 2.7 should be installed.
 
 This project also makes use of PostgreSQL, but the instructions below will walk through setting up a virtual machine with PostgreSQL.
+
+---
 
 
 How to Setup VM
@@ -39,6 +43,8 @@ vagrant up
 ```
 
 Vagrant will then setup a virtual machine.
+
+---
 
 
 How to Run Project
@@ -103,6 +109,8 @@ You can now run `tournament_test.py` with:
 ```
 python tournament_test.py
 ```
+
+---
 
 
 How to Run Project Afterward
